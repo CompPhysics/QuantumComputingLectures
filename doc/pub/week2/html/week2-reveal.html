@@ -1,0 +1,1526 @@
+<!--
+HTML file automatically generated from DocOnce source
+(https://github.com/doconce/doconce/)
+doconce format html week2-reveal.html week2-reveal reveal --html_slide_theme=beige
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/doconce/doconce/" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="January 30-February 3,2023: Composite systems, Tensor products and Hamiltonians">
+<title>January 30-February 3,2023: Composite systems, Tensor products and Hamiltonians</title>
+
+<!-- reveal.js: https://lab.hakim.se/reveal-js/ -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+<link rel="stylesheet" href="reveal.js/css/reveal.css">
+<link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
+<!--
+<link rel="stylesheet" href="reveal.js/css/reveal.css">
+<link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/beigesmall.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/serif.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/moon.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/sky.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/darkgray.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/default.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/cbc.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/simula.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/league.css" id="theme">
+-->
+
+<!-- For syntax highlighting -->
+<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+<!-- Printing and PDF exports -->
+<script>
+var link = document.createElement( 'link' );
+link.rel = 'stylesheet';
+link.type = 'text/css';
+link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+document.getElementsByTagName( 'head' )[0].appendChild( link );
+</script>
+
+<style type="text/css">
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-size: 60%; font-style: italic; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.reveal .alert-text-small   { font-size: 80%;  }
+.reveal .alert-text-large   { font-size: 130%; }
+.reveal .alert-text-normal  { font-size: 90%;  }
+.reveal .alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:5px solid #bababa;
+  -webkit-border-radius: 14px; -moz-border-radius: 14px;
+  border-radius:14px;
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 30px; /* 55px; if icon */
+}
+.reveal .alert-block {padding-top:14px; padding-bottom:14px}
+.reveal .alert-block > p, .alert-block > ul {margin-bottom:1em}
+/*.reveal .alert li {margin-top: 1em}*/
+.reveal .alert-block p+p {margin-top:5px}
+/*.reveal .alert-notice { background-image: url(https://hplgit.github.io/doconce/bundled/html_images/small_gray_notice.png); }
+.reveal .alert-summary  { background-image:url(https://hplgit.github.io/doconce/bundled/html_images/small_gray_summary.png); }
+.reveal .alert-warning { background-image: url(https://hplgit.github.io/doconce/bundled/html_images/small_gray_warning.png); }
+.reveal .alert-question {background-image:url(https://hplgit.github.io/doconce/bundled/html_images/small_gray_question.png); } */
+/* Override reveal.js table border */
+.reveal table td {
+  border: 0;
+}
+
+<style type="text/css">
+/* Override h1, h2, ... styles */
+h1 { font-size: 2.8em; }
+h2 { font-size: 1.5em; }
+h3 { font-size: 1.4em; }
+h4 { font-size: 1.3em; }
+h1, h2, h3, h4 { font-weight: bold; line-height: 1.2; }
+body { overflow: auto; } /* vertical scrolling */
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-size: 60%; font-style: italic; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.slide .alert-text-small   { font-size: 80%;  }
+.slide .alert-text-large   { font-size: 130%; }
+.slide .alert-text-normal  { font-size: 90%;  }
+.slide .alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:5px solid #bababa;
+    -webkit-border-radius:14px; -moz-border-radius:14px;
+  border-radius:14px
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 30px; /* 55px; if icon */
+}
+.slide .alert-block {padding-top:14px; padding-bottom:14px}
+.slide .alert-block > p, .alert-block > ul {margin-bottom:0}
+/*.slide .alert li {margin-top: 1em}*/
+.deck .alert-block p+p {margin-top:5px}
+/*.slide .alert-notice { background-image: url(https://hplgit.github.io/doconce/
+bundled/html_images//small_gray_notice.png); }
+.slide .alert-summary  { background-image:url(https://hplgit.github.io/doconce/
+bundled/html_images//small_gray_summary.png); }
+.slide .alert-warning { background-image: url(https://hplgit.github.io/doconce/
+bundled/html_images//small_gray_warning.png); }
+.slide .alert-question {background-image:url(https://hplgit.github.io/doconce/
+bundled/html_images/small_gray_question.png); } */
+.dotable table, .dotable th, .dotable tr, .dotable tr td {
+  border: 2px solid black;
+  border-collapse: collapse;
+  padding: 2px;
+}
+</style>
+
+
+<!-- Styles for table layout of slides -->
+<style type="text/css">
+td.padding {
+  padding-top:20px;
+  padding-bottom:20px;
+  padding-right:50px;
+  padding-left:50px;
+}
+</style>
+
+</head>
+
+
+<body>
+<div class="reveal">
+<div class="slides">
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript" async
+ src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+
+<section>
+<!-- ------------------- main content ---------------------- -->
+<center>
+<h1 style="text-align: center;">January 30-February 3,2023: Composite systems, Tensor products and Hamiltonians</h1>
+</center>  <!-- document title -->
+
+<!-- author(s): Morten Hjorth-Jensen -->
+<center>
+<b>Morten Hjorth-Jensen</b> [1, 2]
+</center>
+<!-- institution(s) -->
+<center>
+[1] <b>Department of Physics, University of Oslo, Norway</b>
+</center>
+<center>
+[2] <b>Department of Physics and Astronomy and Facility for Rare Isotope Beams, Michigan State University, USA</b>
+</center>
+<br>
+<center>
+<h4>Feb 12, 2023</h4>
+</center> <!-- date -->
+<br>
+<h2 id="summary-from-last-week-and-plans-for-this-week">Summary from last week and plans for this week </h2>
+
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Last week we:</b>
+<p>
+<ol>
+<p><li> defined the state vector and the associated notation</li>
+<p><li> introduced the inner product and showed how to calculate it in an orthonormal basis</li>
+<p><li> introduced outer products and projection operators</li>
+<p><li> introduced tensor products and showed how to contruct state vectors for multiple qubits</li>
+</ol>
+</div>
+
+
+<div class="alert alert-block alert-block alert-text-normal">
+<b>We will repeat some of these topics today and discuss also</b>
+<p>
+<ol>
+<p><li> tensor products of Hilbert Spaces and definition of Computational Basis, partly repetition from last week</li>
+<p><li> quantum measurements are probabilistic</li>
+<p><li> the idea of wavefunction collapse as a result of measurement</li>
+<p><li> Quantum operations and special matrices</li>
+<p><li> Simple Hamiltonians and other operators</li>
+<p><li> First exercise set</li>
+</ol>
+</div>
+
+
+<a href="https://youtu.be/ucXpNSISzOw" target="_blank">Video of lecture</a>
+<h2 id="definition-of-computational-basis-states-repetition-from-last-week">Definition of Computational basis states, repetition from last week </h2>
+
+<!-- to do: make figures with examples of basis states, hydrogen like systems, harmonic oscillator -->
+<p>Assume we have a two-level system where the two states are represented
+by the state vectors \( \vert \phi_0\rangle \) and \( \vert \phi_1\rangle \),
+respectively. These states could represent selected or effective
+degrees of freedom for either a single particle (fermion or boson) or
+they could represent effective many-body degrees of freedon. In actual
+realizations of quantum computing we search often for candidate
+systems where we can use some low-lying states as computational basis
+states. But we are not limited to quantum computing. When doing
+many-body physics, due to the exploding degrees of freedom, we
+normally search after effective ways by which we can reduce the
+involved dimensionalities to a number of degrees of freedom we can
+handle by a given many-body method.
+</p>
+
+<!-- to add === Examples: Hydrogen like states and the harmonic oscillator in one, two and three dimensions === -->
+
+<p>We will now relabel the above two states as two orthogonal and normalized basis (ONB) states </p>
+<p>&nbsp;<br>
+$$
+\vert \phi_0 \rangle = \vert 0 \rangle = \begin{bmatrix} 1 \\ 0 \end{bmatrix},
+$$
+<p>&nbsp;<br>
+
+<p>and </p>
+<p>&nbsp;<br>
+$$
+\vert \phi_1 \rangle = \vert 1 \rangle = \begin{bmatrix} 0 \\ 1 \end{bmatrix}.
+$$
+<p>&nbsp;<br>
+
+<p>It is straight forward to see that \( \langle 1 \vert 0\rangle=0 \). With
+these two states we can define the define the identity operator
+\( \boldsymbol{I} \) as the sum of the outer products of these two states, namely
+</p>
+
+<p>&nbsp;<br>
+$$
+\boldsymbol{I} = \sum_{i=0}^{i=1}\vert i\rangle \langle i\vert = \begin{bmatrix} 1 & 0 \\ 0 & 0 \end{bmatrix} +\begin{bmatrix} 0 & 0 \\ 0 & 1 \end{bmatrix}=\begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}.
+$$
+<p>&nbsp;<br>
+
+<p>We can further define the projection operators</p>
+<p>&nbsp;<br>
+$$
+\boldsymbol{P} = \vert 0\rangle \langle 0\vert = \begin{bmatrix} 1 & 0 \\ 0 & 0 \end{bmatrix},
+$$
+<p>&nbsp;<br>
+
+<p>and </p>
+<p>&nbsp;<br>
+$$
+\boldsymbol{Q} = \vert 1\rangle \langle 1\vert = \begin{bmatrix} 0 & 0 \\ 0 & 1 \end{bmatrix}.
+$$
+<p>&nbsp;<br>
+
+<p>We note that \( P^2=P \), \( Q^2=Q \) (the operators are idempotent) and that
+their determinants are zero, meaning in turn that we cannot use these
+operators for unitary/orthogonal transformations. However, they play
+important roles in defining effective Hilbert spaces for many-body
+studies. Finally, before proceeding we note also that the two matrices
+commute and we have \( \boldsymbol{P}\boldsymbol{Q}=0 \) and \( \left[ \boldsymbol{P},\boldsymbol{Q}\right]=0 \).
+</p>
+<h3 id="superposition-and-more">Superposition and more </h3>
+
+<p>Using the properties of ONBs we can expand a new state in terms of the
+above states. These states could also form  a basis which is an
+eigenbasis of a selected Hamiltonian (more of this below).
+</p>
+
+<p>We define now a new state which is a linear expansion in terms of
+these computational basis states
+</p>
+
+<p>&nbsp;<br>
+$$
+\vert \psi \rangle = \alpha \vert 0 \rangle + \beta\vert 1 \rangle,
+$$
+<p>&nbsp;<br>
+
+<p>where the coefficients \( \alpha = \langle 0 \vert \psi \rangle \) and
+\( \beta =\langle 1 \vert \psi\rangle \) reresent the overlaps between the
+computational basis states and the state \( \vert \psi\rangle \). In
+quantum speech, we say the state is in a superposition of the states
+\( \vert 0\rangle \) and \( \vert 1\rangle \).
+</p>
+
+<p>Computing the inner product of \( \vert \psi \rangle \) we obtain</p>
+<p>&nbsp;<br>
+$$
+\langle \psi \vert \psi \rangle = \vert \alpha \vert ^2\langle 0\vert 0\rangle + \vert \beta \vert ^2\langle 1\vert 1\rangle = \vert \alpha \vert ^2 + \vert \beta \vert ^2 = 1,
+$$
+<p>&nbsp;<br>
+
+<p>since the new basis, which is defined in terms of a a
+unitary/orthogonal transformation, preserves the orthogonality and
+norm of the original computational basis \( \vert 0\rangle \) and \( \vert
+1\rangle \). We demonstrate this below in our discussion on consider the
+unitary transformations.
+</p>
+
+<p>If we now act with the projection operators \( \boldsymbol{P} \) and \( \boldsymbol{Q} \) on
+the state \( \vert \psi\rangle \) we get
+</p>
+
+<p>&nbsp;<br>
+$$
+\boldsymbol{P}\vert \psi \rangle = \vert 0 \rangle\langle 0\vert (\alpha \vert 0 \rangle + \beta\vert 1 \rangle)=\alpha \vert 0\rangle,
+$$
+<p>&nbsp;<br>
+
+<p>that is we <b>project</b> out the \( \vert 0\rangle \) component of the state
+\( \vert \psi\rangle \) with the coefficient \( \alpha \) while \( \boldsymbol{Q} \)
+projects out the \( \vert 1\rangle \) component with coefficient \( \beta \)
+as seen from
+</p>
+
+<p>&nbsp;<br>
+$$
+\boldsymbol{Q}\vert \psi \rangle = \vert 1 \rangle\langle 1\vert (\alpha \vert 0 \rangle + \beta\vert 1 \rangle)=\beta \vert 1\rangle.
+$$
+<p>&nbsp;<br>
+
+<p>The above results can easily be derived by multiplying the pertinent
+matrices with the vectors \( \vert 0\rangle \) and \( \vert 1\rangle \),
+respectively.
+</p>
+
+<p>Using the above linear expansion we can now define the density matrix of the state \( \vert \psi\rangle \) as the outer product</p>
+<p>&nbsp;<br>
+$$
+\boldsymbol{\rho}=\vert \psi \rangle\langle \psi \vert = \alpha\alpha^* \vert 0 \rangle\langle 0\vert+\alpha\beta^* \vert 0 \rangle\langle 1\vert+\beta\alpha^* \vert 1 \rangle\langle 0\vert+\beta\beta^* \vert 1 \rangle\langle 1\vert=\begin{bmatrix} \alpha\alpha^* & \alpha\beta^*\\ \beta\alpha^* & \beta\beta^*\end{bmatrix}.
+$$
+<p>&nbsp;<br>
+
+<p>Finally, we note that the trace of the density matrix is simply given by unity if the states are properly normalized</p>
+<p>&nbsp;<br>
+$$
+\mathrm{tr}\boldsymbol{\rho}=\alpha\alpha^* +\beta\beta^*=1.
+$$
+<p>&nbsp;<br>
+<h2 id="tensor-products-and-composite-systems">Tensor products and Composite systems </h2>
+
+<p>The state space of a composite physical system is the tensor product of the state spaces of the component systems.
+There are two parts to this:
+</p>
+<ol>
+<p><li> Determining the basis for the composite system</li>
+<p><li> Determining the components of the state vector</li>
+</ol>
+<p>
+<p>Last week we introduced the \( \vert 0\rangle \) and \( \vert 1\rangle \) states as our basis states for a single qubit system.
+We will now extend this to a two-qubit system.
+</p>
+
+<p>Consider now two vectors with length \( n=2 \), with elements</p>
+
+<p>&nbsp;<br>
+$$
+\boldsymbol{x}=\vert x \rangle = \begin{bmatrix} x_0 \\ x_1 \end{bmatrix}, 
+$$
+<p>&nbsp;<br>
+
+<p>and</p>
+<p>&nbsp;<br>
+$$
+\boldsymbol{y}=\vert y \rangle = \begin{bmatrix} y_0 \\ y_1 \end{bmatrix}. 
+$$
+<p>&nbsp;<br>
+
+<p>The tensor product of these two vectors is defined as</p>
+<p>&nbsp;<br>
+$$
+\vert x \rangle \otimes \vert y \rangle = \vert xy \rangle  = \begin{bmatrix} x_0y_0 \\ x_0y_1 \\ x_1y_0 \\ x_1y_1 \end{bmatrix}, 
+$$
+<p>&nbsp;<br>
+
+<p>which is now a vector of length \( 4 \).</p>
+
+<p>If we now go back to our original one-qubit basis states, we can form the following tensor products</p>
+<p>&nbsp;<br>
+$$
+\vert 0 \rangle \otimes \vert 0 \rangle = \begin{bmatrix} 1 \\ 0\end{bmatrix} \otimes \begin{bmatrix} 1 \\ 0\end{bmatrix} =\begin{bmatrix} 1 \\ 0 \\ 0 \\ 0 \end{bmatrix}=\vert 00 \rangle, 
+$$
+<p>&nbsp;<br>
+
+<p>&nbsp;<br>
+$$
+\vert 0 \rangle \otimes \vert 1 \rangle = \begin{bmatrix} 1 \\ 0\end{bmatrix} \otimes \begin{bmatrix} 0 \\ 1\end{bmatrix} =\begin{bmatrix} 0 \\ 1 \\ 0 \\ 0 \end{bmatrix}=\vert 01 \rangle, 
+$$
+<p>&nbsp;<br>
+
+<p>&nbsp;<br>
+$$
+\vert 1 \rangle \otimes \vert 0 \rangle = \begin{bmatrix} 0 \\ 1\end{bmatrix} \otimes \begin{bmatrix} 1 \\ 0\end{bmatrix} =\begin{bmatrix} 0 \\ 0 \\ 1 \\ 0 \end{bmatrix}=\vert 10 \rangle, 
+$$
+<p>&nbsp;<br>
+
+<p>and finally</p>
+<p>&nbsp;<br>
+$$
+\vert 1 \rangle \otimes \vert 1 \rangle = \begin{bmatrix} 0 \\ 1\end{bmatrix} \otimes \begin{bmatrix} 0 \\ 1\end{bmatrix} =\begin{bmatrix} 0 \\ 0 \\ 0 \\ 1 \end{bmatrix}=\vert 11 \rangle. 
+$$
+<p>&nbsp;<br>
+
+<p>We have now four different states and we could try to make a new list
+by relabeling the states as follows \( \vert 00 \rangle =\vert 0
+\rangle \), \( \vert 01 \rangle =\vert 1 \rangle \), \( \vert 10 \rangle
+=\vert 2 \rangle \), \( \vert 11 \rangle =\vert 3 \rangle \).
+</p>
+
+<p>In similar ways we can define the tensor product of three qubits (or single-particle states) as</p>
+<p>&nbsp;<br>
+$$
+\vert 0 \rangle \otimes \vert 0 \rangle \otimes \vert 0 \rangle = \begin{bmatrix} 1 \\ 0\end{bmatrix} \otimes \begin{bmatrix} 1 \\ 0\end{bmatrix} \otimes \begin{bmatrix} 1 \\ 0\end{bmatrix}=\begin{bmatrix} 1 \\ 0 \\ 0 \\ 0 \\ 0 \\0 \\ 0 \\ 0\end{bmatrix}=\vert 000 \rangle, 
+$$
+<p>&nbsp;<br>
+
+<p>which is a new vector of length eight. We note that with a single-particle basis given by the states \( \vert 0\rangle \) and \( \vert 1\rangle \) we can, with \( N \) particles construct \( 2^N \) different states.</p>
+
+<p>In our discussions below, we will demonstrate how to generalize the
+description of the basis states by writting efficient codes to
+represent them.
+</p>
+
+<p>The tensor product of two matrices are similar to those of two vectors. Here we show the
+the tensor product of two \( 2\times 2 \) matrices \( \boldsymbol{A} \) and \( \boldsymbol{B} \)
+</p>
+
+<p>&nbsp;<br>
+$$
+\boldsymbol{A} \times \boldsymbol{B} = \begin{bmatrix} a_{00} & a_{01} \\ a_{10} & a_{11} \end{bmatrix} \otimes \begin{bmatrix} b_{00} & b_{01} \\ b_{10} & b_{11} \end{bmatrix} =
+\begin{bmatrix} a_{00} b_{00} &  a_{00}b_{01} & a_{01} b_{00} & a_{01}b_{01} \\
+                a_{00} b_{10} &  a_{00}b_{11} & a_{01} b_{10} & a_{01}b_{11} \\
+                a_{10} b_{00} &  a_{10}b_{01} & a_{11} b_{00} & a_{11}b_{01} \\
+                a_{10} b_{10} &  a_{10}b_{11} & a_{11} b_{10} & a_{11}b_{11} \end{bmatrix}
+$$
+<p>&nbsp;<br>
+<h2 id="measurements">Measurements </h2>
+
+<p>The probability of a measurement on a quantum system giving a certain
+result is determined by the weight of the relevant basis state in the
+state vector. After the measurement, the system is in a state that
+corresponds to the result of the measurement. The operators and
+gates discussed below are examples of operations we can perform on
+specific states.
+</p>
+
+<p>We  consider the state</p>
+<p>&nbsp;<br>
+$$
+\vert \psi\rangle = \alpha \vert 0 \rangle +\beta \vert 1 \rangle
+$$
+<p>&nbsp;<br>
+
+
+<ol>
+<p><li> A measurement can yield only one of the above states, either \( \vert 0\rangle \) or \( \vert 1\rangle \).</li>
+<p><li> The probability of a measurement resulting in \( \vert 0\rangle \) is \( \alpha^*\alpha = \vert \alpha \vert^2 \).</li>
+<p><li> The probability of a measurement resulting in \( \vert 1\rangle \) is \( \beta^*\beta = \vert \beta \vert^2 \).</li>
+<p><li> And we note that the sum of the outcomes gives \( \alpha^*\alpha+\beta^*\beta=1 \) since the two states are normalized.</li>
+</ol>
+<p>
+<p>After the measurement, the state of the system is the state associated with the result of the measurement.</p>
+
+<p>We have already encountered the projection operators \( P \) and \( Q \). Let
+us now look at other types of operations we can make on qubit states.
+</p>
+<h2 id="different-operators-and-gates">Different operators and gates </h2>
+
+<p>In quantum computing, the so-called Pauli matrices, and other simple
+\( 2\times 2 \) matrices, play an important role, ranging from the setup
+of quantum gates to a rewrite of creation and annihilation operators
+and other quantum mechanical operators. Let us start with the familiar
+Pauli matrices and remind ourselves of some of their basic properties.
+</p>
+
+<p>The Pauli matrices are defined as</p>
+<p>&nbsp;<br>
+$$
+\sigma_x = \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix},
+$$
+<p>&nbsp;<br>
+
+<p>&nbsp;<br>
+$$
+\sigma_y = \begin{bmatrix} 0 & -\imath \\ \imath & 0 \end{bmatrix},
+$$
+<p>&nbsp;<br>
+
+<p>and</p>
+<p>&nbsp;<br>
+$$
+\sigma_z = \begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix}.
+$$
+<p>&nbsp;<br>
+
+<p>It is easy to show that the matrices obey the properties (being involutory)</p>
+<p>&nbsp;<br>
+$$
+\sigma_x\sigma_x = \sigma_y\sigma_y=\sigma_z\sigma_z = I=\begin{bmatrix} 1 & 0 \\ 0 & 1\end{bmatrix},
+$$
+<p>&nbsp;<br>
+
+<p>that is their products with themselves result in the identity matrix
+\( \boldsymbol{I} \).  Furthermore, the Pauli matrices are unitary matrices
+meaning that their inverses are equal to their hermitian conjugated
+matrices. The determinants of the Pauli matrices are all equal to \( -1 \),
+as can be easily verified.
+</p>
+
+<p>The Pauli matrices obey also the following commutation rules</p>
+<p>&nbsp;<br>
+$$
+\left[\sigma_x,\sigma_y\right] = 2\imath \sigma_z.
+$$
+<p>&nbsp;<br>
+
+<p>Before we proceed with other matrices and how they can be used to
+operate on various quantum mechanical states, let us try apply these matrices to our one-qubit states.
+</p>
+
+<p>Assume we operate with \( \sigma_x \) on our basis state \( \vert 0 \rangle \). This gives</p>
+<p>&nbsp;<br>
+$$
+\begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}\begin{bmatrix} 1 \\ 0 \end{bmatrix}=\begin{bmatrix} 0  \\ 1  \end{bmatrix},
+$$
+<p>&nbsp;<br>
+
+<p>that is we switch from \( \vert 0\rangle \) to \( \vert 1\rangle \) (often called a spin flip operation) and similary we have</p>
+<p>&nbsp;<br>
+$$
+\begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}\begin{bmatrix} 0 \\ 1 \end{bmatrix}=\begin{bmatrix} 1  \\ 0  \end{bmatrix}.
+$$
+<p>&nbsp;<br>
+
+<p>This matrix plays an important role in quantum computing since we can
+link this with the classical <b>NOT</b> operation.  If we send in bit 0,
+the <b>NOT</b> gate outputs bit 1 and vice versa. We can use the \( \sigma_x \)
+matrix to implement the quantum mechanical equivalent of a classical
+<b>NOT</b> gate. If we input what we could represent as bit 0 in terms of
+the basis state \( \vert 0\rangle \), operating on this state results in
+the state \( \vert 1\rangle \), which we in turn can interpret as the
+classical bit 1.
+</p>
+
+<p>If we have a linear superposition of these states we obtain</p>
+<p>&nbsp;<br>
+$$
+\begin{bmatrix}0 & 1 \\ 1 & 0 \end{bmatrix}\begin{bmatrix}\alpha \\ \beta \end{bmatrix}=\begin{bmatrix}\beta \\ \alpha \end{bmatrix}.
+$$
+<p>&nbsp;<br>
+
+<p>The \( \sigma_y \) matrix introduces an imaginary sign, which we will later encounter in terms of so-called phase-shift operations.</p>
+
+<p>The \( \sigma_z \) matrix has the following effect</p>
+<p>&nbsp;<br>
+$$
+\begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix}\begin{bmatrix} 1 \\ 0 \end{bmatrix}=\begin{bmatrix} 1  \\ 0  \end{bmatrix},
+$$
+<p>&nbsp;<br>
+
+<p>and </p>
+<p>&nbsp;<br>
+$$
+\begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix}\begin{bmatrix} 0 \\ 1 \end{bmatrix}=\begin{bmatrix} 0  \\ -1  \end{bmatrix},
+$$
+<p>&nbsp;<br>
+
+<p>which we will also link with a specific phase-shift.</p>
+<h3 id="other-important-matrices">Other important matrices </h3>
+
+<p>We end with presenting other operators (as matrices) which play an important role in quantum computing, the so-called Hadamard matrix (or gate as we will use later)</p>
+<p>&nbsp;<br>
+$$
+\boldsymbol{H}=\frac{1}{\sqrt{2}}\begin{bmatrix} 1 & 1 \\ 1 & -1\end{bmatrix}.
+$$
+<p>&nbsp;<br>
+
+<p>The action of the operator \( \boldsymbol{H} \) on a computational basis state like \( \vert 0\rangle \) gives</p>
+<p>&nbsp;<br>
+$$
+\boldsymbol{H}\vert 0 \rangle = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 & 1 \\ 1 & -1\end{bmatrix}\begin{bmatrix} 1 \\ 0\end{bmatrix}=\frac{1}{\sqrt{2}}(\vert 0\rangle + \vert 1\rangle),
+$$
+<p>&nbsp;<br>
+
+<p>and </p>
+
+<p>&nbsp;<br>
+$$
+\boldsymbol{H}\vert 1 \rangle = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 & 1 \\ 1 & -1\end{bmatrix}\begin{bmatrix} 0 \\ 1\end{bmatrix}=\frac{1}{\sqrt{2}}(\vert 0\rangle - \vert 1\rangle),
+$$
+<p>&nbsp;<br>
+
+<p>that is we create a superposition of the states \( \vert 0\rangle \) and \( \vert 1\rangle \).</p>
+
+<p>Another famous operation is the phase matrix given by</p>
+<p>&nbsp;<br>
+$$
+\boldsymbol{S} = \begin{bmatrix} 1 & 0 \\ 0 & \imath\end{bmatrix}.
+$$
+<p>&nbsp;<br>
+<h2 id="unitarity">Unitarity </h2>
+
+<p>The matrices we introduced here are so-called unitary matrices. This
+is an important element in quantum mechanics since the evolution of a
+closed quantum system is described by operations involving unitary
+operations only.
+</p>
+
+<p>We have defined a new state \( \vert \psi_p\rangle \) as a linear expansion in terms of an orthogonal and normalized basis (our computational basis) \( \phi_{\lambda} \)</p>
+<p>&nbsp;<br>
+$$
+\begin{equation}
+\vert \psi_i\rangle = \sum_{j} u_{ij}\vert \phi_{j}\rangle.
+\tag{1}
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+<p>It is normal to choose a basis defined as the eigenfunctions of parts
+of the full Hamiltonian. The typical situation consists of the
+solutions of the one-body part of the Hamiltonian, that is we have
+</p>
+
+<p>&nbsp;<br>
+$$
+\hat{h}_0\vert \phi_{i}\rangle=\epsilon_{i}\vert \phi_{i}\rangle.
+$$
+<p>&nbsp;<br>
+
+<p>This is normally referred to as a single-particle basis \( \vert\phi_{i}(\mathbf{r})\rangle \),
+defined by the quantum numbers \( i \) and \( \mathbf{r} \).
+</p>
+
+<p>A unitary transformation is important since it keeps the orthogonality.
+To see this consider first a basis of vectors \( \mathbf{v}_i \),
+</p>
+<p>&nbsp;<br>
+$$
+\mathbf{v}_i = \begin{bmatrix} v_{i1} \\ \dots \\ \dots \\v_{in} \end{bmatrix}
+$$
+<p>&nbsp;<br>
+
+<p>We assume that the basis is orthogonal, that is </p>
+<p>&nbsp;<br>
+$$
+\mathbf{v}_j^T\mathbf{v}_i = \delta_{ij}.
+$$
+<p>&nbsp;<br>
+
+<p>An orthogonal or unitary transformation</p>
+<p>&nbsp;<br>
+$$
+\mathbf{w}_i=\mathbf{U}\mathbf{v}_i,
+$$
+<p>&nbsp;<br>
+
+<p>preserves the dot product and orthogonality since</p>
+<p>&nbsp;<br>
+$$
+\mathbf{w}_j^T\mathbf{w}_i=(\mathbf{U}\mathbf{v}_j)^T\mathbf{U}\mathbf{v}_i=\mathbf{v}_j^T\mathbf{U}^T\mathbf{U}\mathbf{v}_i= \mathbf{v}_j^T\mathbf{v}_i = \delta_{ij}.
+$$
+<p>&nbsp;<br>
+
+<p>This means that if the coefficients \( u_{p\lambda} \) belong to a unitary
+or orthogonal transformation (using the Dirac bra-ket notation)
+</p>
+
+<p>&nbsp;<br>
+$$
+\vert \psi_i\rangle = \sum_{j} u_{ij}\vert \phi_{j}\rangle.
+$$
+<p>&nbsp;<br>
+
+<p>orthogonality is preserved.</p>
+
+<p>This propertry is extremely useful when we build up a basis of
+many-body determinant based states.
+</p>
+
+<p>_Note also that although a basis \( \left\{\vert \phi_i \rangle\right\} \) contains an infinity of states, for practical calculations we have always to make some truncations._ </p>
+<h3 id="example">Example </h3>
+
+<p>Assume we have two one-qubit states represented by</p>
+<p>&nbsp;<br>
+$$
+\vert \psi \rangle = \alpha \vert 0 \rangle + \beta \vert 1\rangle=\begin{bmatrix}\alpha \\ \beta \end{bmatrix},
+$$
+<p>&nbsp;<br>
+
+<p>and</p>
+<p>&nbsp;<br>
+$$
+\vert \phi \rangle = \gamma \vert 0 \rangle + \delta \vert 1\rangle=\begin{bmatrix}\gamma \\ \delta \end{bmatrix}.
+$$
+<p>&nbsp;<br>
+
+<p>We assume that the state \( \vert \phi \rangle \) is obtained through a
+unitary transformation of \( \vert \psi \rangle \) through a matrix
+\( \boldsymbol{U} \) with its hermitian conjugate \( \boldsymbol{U}^{\dagger} \) with matrix
+elements \( u_{ij}^{\dagger}=u_{ji}^* \) and
+\( \boldsymbol{I}=\boldsymbol{U}\boldsymbol{U}^{\dagger}=\boldsymbol{U}^{\dagger}\boldsymbol{U} \).
+</p>
+
+<p>Note that this means that the hermitian conjugate of a unitary matrix
+is equal to its inverse. This has important consequences for what is
+called reversibility. We say quantum mechanics is a theory which is
+reversible with a probabilistic determinism. Classical mechanics on
+the other is reversible in a deterministic way, that is, knowing all
+initial conditions we can in principle determine the future motion of
+an object which obey the laws of motion of classical mechanics.
+</p>
+
+<p>We have then</p>
+<p>&nbsp;<br>
+$$
+\begin{bmatrix}\gamma \\ \delta \end{bmatrix}=\begin{bmatrix}u_{00} & u_{01} \\ u_{10} & u_{11} \end{bmatrix}\begin{bmatrix}\alpha \\ \beta \end{bmatrix}.
+$$
+<p>&nbsp;<br>
+
+<p>Since our original basis \( \vert \psi\rangle \) is orthogonal and normalized with \( \vert\alpha\vert^2+\vert\beta\vert^2=1 \), the new basis is also orthogonal and normalized, as we can see below here.</p>
+
+<p>Since the inverse of a hermitian matrix is equal to its hermitian
+conjugate/adjoint), unitary transformations are always reversible.
+</p>
+
+<p>Why are only unitary transformations allowed? The key lies in the way the inner product tranforms.</p>
+
+<p>To see this we rewrite the new basis from the previous example in its two components as</p>
+<p>&nbsp;<br>
+$$
+\vert \phi\rangle_i=\sum_{j}u_{ij}\vert \psi\rangle_j,
+$$
+<p>&nbsp;<br>
+
+<p>or in terms of a matrix-vector notatio we have</p>
+<p>&nbsp;<br>
+$$
+\vert \phi\rangle=\boldsymbol{U}\vert \psi\rangle,
+$$
+<p>&nbsp;<br>
+
+<p>We have already assumed that \( \langle \psi \vert \psi \rangle = \vert\alpha\vert^2+\vert\beta\vert^2=1 \).</p>
+
+<p>We have that </p>
+<p>&nbsp;<br>
+$$
+\langle \phi\vert_i=\sum_{j}u_{ij}^*\langle \psi\vert_j,
+$$
+<p>&nbsp;<br>
+
+<p>or in terms of a matrix-vector notation we have</p>
+<p>&nbsp;<br>
+$$
+\langle \phi\vert=\langle \psi\vert\boldsymbol{U}^{\dagger}.
+$$
+<p>&nbsp;<br>
+
+<p>Note that the two vectors are row vectors now.</p>
+
+<p>If we stay with this notation we have</p>
+
+<p>&nbsp;<br>
+$$
+\langle \phi\vert\phi\rangle = \langle \psi \boldsymbol{U}^{\dagger}\boldsymbol{U}\vert \psi\rangle = \langle \psi\vert \psi\rangle=1!
+$$
+<p>&nbsp;<br>
+
+<p>Unitary transformations are rotations in state space which preserve the
+length (the square root of the inner product) of the state vector.
+</p>
+<h2 id="representation-of-states-and-hamiltonians">Representation of states and Hamiltonians </h2>
+
+<p>Before we proceed we need several other definitions.  Throughout these
+lectures we will assume that the interacting part of the Hamiltonian
+can be approximated by a two-body interaction.  This means that our
+Hamiltonian can be written as the sum of a onebody part, which
+includes kinetic energy and an eventual external field, and a twobody
+interaction
+</p>
+
+<p>&nbsp;<br>
+$$
+\begin{equation}
+    \hat{H} = \hat{H}_0 + \hat{H}_I 
+    = \sum_{i=1}^N \hat{h}_0(x_i) + \sum_{i < j}^N \hat{v}(r_{ij}),
+\tag{2}
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+<p>with </p>
+<p>&nbsp;<br>
+$$
+\begin{equation}
+  H_0=\sum_{i=1}^N \hat{h}_0(x_i).
+\tag{3}
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+<p>The onebody part \( u_{\mathrm{ext}}(x_i) \) is normally approximated by a
+harmonic oscillator potential or the Coulomb interaction an electron
+feels from the nucleus. However, other potentials are fully possible,
+such as one derived from the self-consistent solution of the
+Hartree-Fock equations.
+</p>
+
+<p>Our Hamiltonian is invariant under the permutation (interchange) of
+two particles.  Since we deal with fermions however, the total wave
+function is antisymmetric.  Let \( \hat{P} \) be an operator which
+interchanges two particles.  Due to the symmetries we have ascribed to
+our Hamiltonian, this operator commutes with the total Hamiltonian,
+</p>
+
+<p>&nbsp;<br>
+$$
+[\hat{H},\hat{P}] = 0,
+ $$
+<p>&nbsp;<br>
+
+<p>meaning that \( \Psi_{\lambda}(x_1, x_2, \dots , x_N) \) is an eigenfunction of 
+\( \hat{P} \) as well, that is
+</p>
+<p>&nbsp;<br>
+$$
+\hat{P}_{ij}\Psi_{\lambda}(x_1, x_2, \dots,x_i,\dots,x_j,\dots,x_N)=
+\beta\Psi_{\lambda}(x_1, x_2, \dots,x_i,\dots,x_j,\dots,x_N),
+$$
+<p>&nbsp;<br>
+
+<p>where \( \beta \) is the eigenvalue of \( \hat{P} \). We have introduced the suffix \( ij \) in order to indicate that we permute particles \( i \) and \( j \). The variable \( N \) refers to the number of particles.
+The Pauli principle tells us that the total wave function for a system of fermions
+has to be antisymmetric, resulting in the eigenvalue \( \beta = -1 \).   The variable \( N \) represents the number of particles.
+</p>
+
+<p>If we deal with fermions, we assume that  we can approximate the exact eigenfunction with a Slater determinant</p>
+<p>&nbsp;<br>
+$$
+\begin{equation}
+   \Phi(x_1, x_2,\dots ,x_N,\alpha,\beta,\dots, \sigma)=\frac{1}{\sqrt{N!}}
+\left| \begin{array}{ccccc} \psi_{\alpha}(x_1)& \psi_{\alpha}(x_2)& \dots & \dots & \psi_{\alpha}(x_N)\\
+                            \psi_{\beta}(x_1)&\psi_{\beta}(x_2)& \dots & \dots & \psi_{\beta}(x_N)\\  
+                            \dots & \dots & \dots & \dots & \dots \\
+                            \dots & \dots & \dots & \dots & \dots \\
+                     \psi_{\sigma}(x_1)&\psi_{\sigma}(x_2)& \dots & \dots & \psi_{\sigma}(x_N)\end{array} \right|, \tag{4}
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+<p>where  \( x_i \)  stand for the coordinates and spin values of a particle \( i \) and \( \alpha,\beta,\dots, \gamma \) 
+are quantum numbers needed to describe remaining quantum numbers.  
+This ansatz for the computational basis is often based on single-particle functions which are eigenfunctions of a part of the total Hamiltonian. Most frequently, these single-particle basis functions are eigenpairs of the non-interacting part of the Hamiltonian (normally defined by kinetic and external potential operators).
+</p>
+
+<p>For Fermions (identical and indistinguishable particles) we will 
+form an ansatz for a given state in terms of so-called Slater determinants determined
+by a chosen basis of single-particle functions. 
+</p>
+
+<p>For a given \( n\times n \) matrix \( \mathbf{A} \) we can write its determinant</p>
+<p>&nbsp;<br>
+$$
+   det(\mathbf{A})=|\mathbf{A}|=
+\left| \begin{array}{ccccc} a_{11}& a_{12}& \dots & \dots & a_{1n}\\
+                            a_{21}&a_{22}& \dots & \dots & a_{2n}\\  
+                            \dots & \dots & \dots & \dots & \dots \\
+                            \dots & \dots & \dots & \dots & \dots \\
+                            a_{n1}& a_{n2}& \dots & \dots & a_{nn}\end{array} \right|,
+$$
+<p>&nbsp;<br>
+
+<p>in a more compact form as </p>
+<p>&nbsp;<br>
+$$
+|\mathbf{A}|= \sum_{i=1}^{n!}(-1)^{p_i}\hat{P}_i a_{11}a_{22}\dots a_{nn},
+$$
+<p>&nbsp;<br>
+
+<p>where \( \hat{P}_i \) is a permutation operator which permutes the column indices \( 1,2,3,\dots,n \)
+and the sum runs over all \( n! \) permutations.  The quantity \( p_i \) represents the number of transpositions of column indices that are needed in order to bring a given permutation back to its initial ordering, in our case given by \( a_{11}a_{22}\dots a_{nn} \) here.
+</p>
+
+<p>A simple \( 2\times 2 \) determinant illustrates this. We have</p>
+<p>&nbsp;<br>
+$$
+   det(\mathbf{A})=
+\left| \begin{array}{cc} a_{11}& a_{12}\\
+                            a_{21}&a_{22}\end{array} \right|= (-1)^0a_{11}a_{22}+(-1)^1a_{12}a_{21},
+$$
+<p>&nbsp;<br>
+
+<p>where in the last term we have interchanged the column indices \( 1 \) and
+\( 2 \). The natural ordering we have chosen is \( a_{11}a_{22} \).
+</p>
+
+<p>We define our new single-particle basis (this is a normal approach for
+Hartree-Fock theory) by performing a unitary transformation on our
+previous basis (labelled with greek indices) as
+</p>
+<p>&nbsp;<br>
+$$
+\vert \psi\rangle_i  = \sum_{j} u_{ij}\vert \phi\rangle_j. 
+$$
+<p>&nbsp;<br>
+
+<p>If the basis has infinitely many solutions, we need to truncate the
+above sum.  We assume that the basis \( \vert\phi\rangle_j \) is
+orthogonal.
+</p>
+
+<p>If we stay with determinants, a feature which will become useful is to
+expand a new determinant in terms of a previous one that is defined by
+a given set of single-particle state functions.  As discussed above,
+we can define a new basis that is a linear combination of another
+basis (assumed to be orthogonal and normalized).  This means that if
+the coefficients \( u_{ij} \) belong to a unitary or orthogonal
+orthogonality is preserved, as discussed above.
+</p>
+
+<p>This propertry is extremely useful when we build up a basis of many-body Stater determinant based states. </p>
+
+<p>Let us now for simplicity drop our references to quantum mechanical basis states.
+Consider the following determinant
+</p>
+<p>&nbsp;<br>
+$$
+\left| \begin{array}{cc} \alpha_1b_{11}+\alpha_2sb_{12}& a_{12}\\
+                         \alpha_1b_{21}+\alpha_2b_{22}&a_{22}\end{array} \right|=\alpha_1\left|\begin{array}{cc} b_{11}& a_{12}\\
+                         b_{21}&a_{22}\end{array} \right|+\alpha_2\left| \begin{array}{cc} b_{12}& a_{12}\\b_{22}&a_{22}\end{array} \right|
+$$
+<p>&nbsp;<br>
+
+<p>We can generalize this to  an \( n\times n \) matrix and have </p>
+<p>&nbsp;<br>
+$$
+\left| \begin{array}{cccccc} a_{11}& a_{12} & \dots & \sum_{k=1}^n c_k b_{1k} &\dots & a_{1n}\\
+a_{21}& a_{22} & \dots & \sum_{k=1}^n c_k b_{2k} &\dots & a_{2n}\\
+\dots & \dots & \dots & \dots & \dots & \dots \\
+\dots & \dots & \dots & \dots & \dots & \dots \\
+a_{n1}& a_{n2} & \dots & \sum_{k=1}^n c_k b_{nk} &\dots & a_{nn}\end{array} \right|=
+\sum_{k=1}^n c_k\left| \begin{array}{cccccc} a_{11}& a_{12} & \dots &  b_{1k} &\dots & a_{1n}\\
+a_{21}& a_{22} & \dots &  b_{2k} &\dots & a_{2n}\\
+\dots & \dots & \dots & \dots & \dots & \dots\\
+\dots & \dots & \dots & \dots & \dots & \dots\\
+a_{n1}& a_{n2} & \dots &  b_{nk} &\dots & a_{nn}\end{array} \right| .
+$$
+<p>&nbsp;<br>
+
+<p>This is a property we will use in our discussions of different many-body methods in later chapters. </p>
+
+<p>We can generalize the previous results, now 
+with all elements \( a_{ij} \)  being given as functions of 
+linear combinations  of various coefficients \( c_{ij} \) and \( b_{ij} \),
+</p>
+<p>&nbsp;<br>
+$$
+\left| \begin{array}{cccccc} \sum_{k=1}^n b_{1k}c_{k1}& \sum_{k=1}^n b_{1k}c_{k2} & \dots & \sum_{k=1}^n b_{1k}c_{kj}  &\dots & \sum_{k=1}^n b_{1k}c_{kn}\\
+\sum_{k=1}^n b_{2k}c_{k1}& \sum_{k=1}^n b_{2k}c_{k2} & \dots & \sum_{k=1}^n b_{2k}c_{kj} &\dots & \sum_{k=1}^n b_{2k}c_{kn}\\
+\dots & \dots & \dots & \dots & \dots & \dots \\
+\dots & \dots & \dots & \dots & \dots &\dots \\
+\sum_{k=1}^n b_{nk}c_{k1}& \sum_{k=1}^n b_{nk}c_{k2} & \dots & \sum_{k=1}^n b_{nk}c_{kj} &\dots & \sum_{k=1}^n b_{nk}c_{kn}\end{array} \right|=det(\mathbf{C})det(\mathbf{B}),
+$$
+<p>&nbsp;<br>
+
+<p>where \( det(\mathbf{C}) \) and \( det(\mathbf{B}) \) are the determinants of \( n\times n \) matrices
+with elements \( c_{ij} \) and \( b_{ij} \) respectively.  
+This is a property we will use in our Hartree-Fock discussions. Convince yourself about the correctness of the above expression by setting \( n=2 \). 
+</p>
+
+<p>With our definition of the new basis in terms of an orthogonal basis we have (dropping the bra-ket notation)</p>
+<p>&nbsp;<br>
+$$
+\psi_p(x)  = \sum_{\lambda} u_{p\lambda}\phi_{\lambda}(x).
+$$
+<p>&nbsp;<br>
+
+<p>If the coefficients \( u_{p\lambda} \) belong to an orthogonal or unitary matrix, the new basis
+is also orthogonal. 
+Our Slater determinant in the new basis \( \psi_p(x) \) is written as
+</p>
+<p>&nbsp;<br>
+$$
+\frac{1}{\sqrt{N!}}
+\left| \begin{array}{ccccc} \psi_{p}(x_1)& \psi_{p}(x_2)& \dots & \dots & \psi_{p}(x_N)\\
+                            \psi_{q}(x_1)&\psi_{q}(x_2)& \dots & \dots & \psi_{q}(x_N)\\  
+                            \dots & \dots & \dots & \dots & \dots \\
+                            \dots & \dots & \dots & \dots & \dots \\
+                     \psi_{t}(x_1)&\psi_{t}(x_2)& \dots & \dots & \psi_{t}(x_N)\end{array} \right|=\frac{1}{\sqrt{N!}}
+\left| \begin{array}{ccccc} \sum_{\lambda} u_{p\lambda}\phi_{\lambda}(x_1)& \sum_{\lambda} u_{p\lambda}\phi_{\lambda}(x_2)& \dots & \dots & \sum_{\lambda} u_{p\lambda}\phi_{\lambda}(x_N)\\
+                            \sum_{\lambda} u_{q\lambda}\phi_{\lambda}(x_1)&\sum_{\lambda} u_{q\lambda}\phi_{\lambda}(x_2)& \dots & \dots & \sum_{\lambda} u_{q\lambda}\phi_{\lambda}(x_N)\\  
+                            \dots & \dots & \dots & \dots & \dots \\
+                            \dots & \dots & \dots & \dots & \dots \\
+                     \sum_{\lambda} u_{t\lambda}\phi_{\lambda}(x_1)&\sum_{\lambda} u_{t\lambda}\phi_{\lambda}(x_2)& \dots & \dots & \sum_{\lambda} u_{t\lambda}\phi_{\lambda}(x_N)\end{array} \right|,
+$$
+<p>&nbsp;<br>
+
+<p>which is nothing but \( det(\mathbf{C})det(\Phi) \), with \( det(\Phi) \) being the determinant given by the basis functions \( \phi_{\lambda}(x) \). </p>
+<h2 id="simple-hamiltonian-models">Simple  Hamiltonian models </h2>
+
+<p>In order to study get started with coding, we will study two simple Hamiltonian systems, one which we can use for a single qubit systems and one which has as basis functions a two-qubit system. These two simple Hamiltonians exhibit also something which is called level crossing, a feature which we will use in later studies of entanglement.</p>
+
+<p>We study first a simple two-level system. Thereafter we
+extend our model to a four-level system which can be
+interpreted as composed of two separate (not necesseraly identical)
+subsystems.
+</p>
+
+<p>We let our hamiltonian depend linearly on a strength parameter \( z \)</p>
+
+<p>&nbsp;<br>
+$$
+       H=H_0+\lambda H_\mathrm{I},
+$$
+<p>&nbsp;<br>
+
+<p>with \( \lambda \in [0,1] \), where the limits \( \lambda=0 \) and \( \lambda=1 \)
+represent the non-interacting (or unperturbed) and fully interacting
+system, respectively.  The model is an eigenvalue problem with only
+two available states, which we label \( \vert 0\rangle \) and \( \vert
+1\rangle \), respectively. Below we will let state \( \vert 0 \rangle \)
+represent the lowest state (often referred to as model-space state)
+with its pertinent eigenvalue and eigenvector whereas state \( \vert 1\rangle \) represents the eigenvalue of
+the excluded space.  The non-interacting solutions to our problem are
+</p>
+
+<p>&nbsp;<br>
+$$
+\begin{equation}
+       H_0\vert 0 \rangle =\epsilon_0\vert 0 \rangle,
+\tag{5}
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+<p>and</p>
+<p>&nbsp;<br>
+$$
+\begin{equation}
+       H_0\vert 1\rangle =\epsilon_1\vert 1\rangle,
+\tag{6}
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+<p>with \( \epsilon_0 < \epsilon_1 \). We label the off-diagonal matrix
+elements \( X \), while \( X_0=\langle 0 \vert H_I\vert 0 \rangle \) and
+\( X_1=\langle 1 \vert H_1\vert 1 \rangle \).  The exact eigenvalue
+problem
+</p>
+
+<p>&nbsp;<br>
+$$
+\tag{7}
+\begin{equation}
+\left(\begin{array}{cc}\epsilon_0+\lambda X_0 &\lambda X \\
+zX &\epsilon_1+\lambda X_1 \end{array}\right)
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+<p>yields</p>
+<p>&nbsp;<br>
+$$
+\begin{eqnarray}
+\tag{8}
+     E(\lambda)=&\frac{1}{2}\left\{\epsilon_0 +\epsilon_1 +\lambda X_0
+     +\lambda X_1 \pm \left(
+     \epsilon_1 -\epsilon_0 +\lambda X_1-\lambda X_0\right) \right. \\ \nonumber
+     & \left. \times\sqrt{1+\frac{4\lambda^2X^2}{\left(
+     \epsilon_1 -\epsilon_0 +\lambda X_1-\lambda X_0\right)^2}}
+     \right\}.
+\end{eqnarray}
+$$
+<p>&nbsp;<br>
+
+<p>In the results below we set the parameters \( \epsilon_0=0 \),
+\( \epsilon_1=4 \), \( X_0=-X_1=3 \) and \( X=0.2 \).  This eigenvalue problem can
+easily be rewritten in terms of the standard Pauli matrices.  The
+non-interacting solutions represent our computational basis.
+Pertinent to our choice of parameters, is that at \( \lambda\geq 2/3 \),
+the lowest eigenstate is dominated by \( \vert 1\rangle \) while the upper
+is \( \vert 0 \rangle \). At \( \lambda=1 \) the \( \vert 0 \rangle \) mixing of
+the lowest eigenvalue is \( 1\% \) while for \( \lambda\leq 2/3 \) we have a
+\( \vert 0 \rangle \) component of more than \( 90\% \).  The character of the
+eigenvectors has therefore been interchanged when passing \( z=2/3 \). The
+value of the parameter \( X \) represents the strength of the coupling
+between the model space and the excluded space.  The following code
+computes and plots the eigenvalues.
+</p>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="font-size: 80%; line-height: 125%;">%matplotlib inline
+
+<span style="color: #8B008B; font-weight: bold">from</span>  <span style="color: #008b45; text-decoration: underline">matplotlib</span> <span style="color: #8B008B; font-weight: bold">import</span> pyplot <span style="color: #8B008B; font-weight: bold">as</span> plt
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+dim = <span style="color: #B452CD">2</span>
+<span style="color: #228B22">#Setting up a tridiagonal matrix and finding eigenvectors and eigenvalues</span>
+Hamiltonian = np.zeros((dim,dim))
+<span style="color: #228B22">#number of lambda values</span>
+n = <span style="color: #B452CD">100</span>
+lmbd = np.linspace(<span style="color: #B452CD">0.</span>,<span style="color: #B452CD">1.0</span>,n)
+e0 = <span style="color: #B452CD">0.0</span>
+e1 = <span style="color: #B452CD">4.0</span>
+X = <span style="color: #B452CD">0.20</span>
+Xp = <span style="color: #B452CD">3.0</span>
+Eigenvalue = np.zeros((dim,n))
+<span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(n): 
+    Hamiltonian[<span style="color: #B452CD">0</span>,<span style="color: #B452CD">0</span>] = lmbd[i]*Xp+e0
+    Hamiltonian[<span style="color: #B452CD">0</span>,<span style="color: #B452CD">1</span>] = lmbd[i]*X
+    Hamiltonian[<span style="color: #B452CD">1</span>,<span style="color: #B452CD">0</span>] = Hamiltonian[<span style="color: #B452CD">0</span>,<span style="color: #B452CD">1</span>]
+    Hamiltonian[<span style="color: #B452CD">1</span>,<span style="color: #B452CD">1</span>] = e1+lmbd[i]*(-Xp)
+    <span style="color: #228B22"># diagonalize and obtain eigenvalues, not necessarily sorted</span>
+    EigValues, EigVectors = np.linalg.eig(Hamiltonian)
+    <span style="color: #228B22"># sort eigenvectors and eigenvalues</span>
+    permute = EigValues.argsort()
+    EigValues = EigValues[permute]
+    EigVectors = EigVectors[:,permute]
+    Eigenvalue[<span style="color: #B452CD">0</span>,i] = EigValues[<span style="color: #B452CD">0</span>]
+    Eigenvalue[<span style="color: #B452CD">1</span>,i] = EigValues[<span style="color: #B452CD">1</span>]
+plt.plot(lmbd, Eigenvalue[<span style="color: #B452CD">0</span>,:] ,<span style="color: #CD5555">&#39;b-&#39;</span>,lmbd, Eigenvalue[<span style="color: #B452CD">1</span>,:],<span style="color: #CD5555">&#39;g-&#39;</span>,)
+plt.xlabel(<span style="color: #CD5555">&#39;$\lambda$&#39;</span>)
+plt.ylabel(<span style="color: #CD5555">&#39;Eigenvalues&#39;</span>)
+plt.show()
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p>This model exhibits a simple level crossing where the
+composition of the final interacting states change character as we
+gradually switch on the interaction.
+</p>
+
+<p>We extend the simple two-level system to a four level
+system. This system can be thought of as composed of two subsystems
+\( A \) and \( B \). Each subsystem has computational basis states
+</p>
+
+<p>&nbsp;<br>
+$$
+\vert 0\rangle_{\mathrm{A,B}}=\begin{bmatrix} 1 & 0\end{bmatrix}^T \hspace{1cm} \vert 1\rangle_{\mathrm{A,B}}=\begin{bmatrix} 0 & 1\end{bmatrix}^T.
+$$
+<p>&nbsp;<br>
+
+<p>The subsystems could represent single particles or composite many-particle systems of a given symmetry.
+This leads to the many-body computational basis states
+</p>
+
+<p>&nbsp;<br>
+$$
+\vert 00\rangle = \vert 0\rangle_{\mathrm{A}}\otimes \vert 0\rangle_{\mathrm{B}}=\begin{bmatrix} 1 & 0 & 0 &0\end{bmatrix}^T,
+$$
+<p>&nbsp;<br>
+
+<p>and</p>
+<p>&nbsp;<br>
+$$
+\vert 10\rangle = \vert 1\rangle_{\mathrm{A}}\otimes \vert 0\rangle_{\mathrm{B}}=\begin{bmatrix} 0 & 1 & 0 &0\end{bmatrix}^T,
+$$
+<p>&nbsp;<br>
+
+<p>and</p>
+<p>&nbsp;<br>
+$$
+\vert 01\rangle = \vert 0\rangle_{\mathrm{A}}\otimes \vert 1\rangle_{\mathrm{B}}=\begin{bmatrix} 0 & 0 & 1 &0\end{bmatrix}^T,
+$$
+<p>&nbsp;<br>
+
+<p>and finally</p>
+<p>&nbsp;<br>
+$$
+\vert 11\rangle = \vert 1\rangle_{\mathrm{A}}\otimes \vert 1\rangle_{\mathrm{B}}=\begin{bmatrix} 0 & 0 & 0 &1\end{bmatrix}^T.
+$$
+<p>&nbsp;<br>
+
+<p>These computational basis states define also the eigenstates of the non-interacting  Hamiltonian</p>
+<p>&nbsp;<br>
+$$
+H_0\vert 00 \rangle = \epsilon_{00}\vert 00 \rangle,
+$$
+<p>&nbsp;<br>
+
+<p>&nbsp;<br>
+$$
+H_0\vert 10 \rangle = \epsilon_{10}\vert 10 \rangle,
+$$
+<p>&nbsp;<br>
+
+<p>&nbsp;<br>
+$$
+H_0\vert 01 \rangle = \epsilon_{01}\vert 01 \rangle,
+$$
+<p>&nbsp;<br>
+
+<p>and</p>
+<p>&nbsp;<br>
+$$
+H_0\vert 11 \rangle = \epsilon_{11}\vert 11 \rangle.
+$$
+<p>&nbsp;<br>
+
+<p>The interacting part of the Hamiltonian \( H_{\mathrm{I}} \) is given by the tensor product of two \( \sigma_x \) and \( \sigma_z \)  matrices, respectively, that is</p>
+<p>&nbsp;<br>
+$$
+H_{\mathrm{I}}=H_x\sigma_x\otimes\sigma_x+H_z\sigma_z\otimes\sigma_z,
+$$
+<p>&nbsp;<br>
+
+<p>where \( H_x \) and \( H_z \) are interaction strength parameters. Our final Hamiltonian matrix is given by</p>
+<p>&nbsp;<br>
+$$
+\boldsymbol{H}=\begin{bmatrix} \epsilon_{00}+H_z & 0 & 0 & H_x \\
+                       0  & \epsilon_{10}-H_z & H_x & 0 \\
+		       0 & H_x & \epsilon_{01}+H_z & 0 \\
+		       H_x & 0 & 0 & \epsilon_{11} -H_z \end{bmatrix}.
+$$
+<p>&nbsp;<br>
+
+<p>The four eigenstates of the above Hamiltonian matrix can in turn be used to
+define density matrices. As an example, the density matrix of the
+first eigenstate (lowest energy \( E_0 \)) \( \Psi_0 \) is
+</p>
+
+<p>&nbsp;<br>
+$$
+\rho_0=\left(\alpha_{00}\vert 00 \rangle\langle 00\vert+\alpha_{10}\vert 10 \rangle\langle 10\vert+\alpha_{01}\vert 01 \rangle\langle 01\vert+\alpha_{11}\vert 11 \rangle\langle 11\vert\right),
+$$
+<p>&nbsp;<br>
+
+<p>where the coefficients \( \alpha_{ij} \) are the eigenvector coefficients
+resulting from the solution of the above eigenvalue problem.
+</p>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="font-size: 80%; line-height: 125%;">%matplotlib inline
+<span style="color: #8B008B; font-weight: bold">from</span>  <span style="color: #008b45; text-decoration: underline">matplotlib</span> <span style="color: #8B008B; font-weight: bold">import</span> pyplot <span style="color: #8B008B; font-weight: bold">as</span> plt
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">scipy.linalg</span> <span style="color: #8B008B; font-weight: bold">import</span> logm, expm
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">log2M</span>(a): <span style="color: #228B22"># base 2 matrix logarithm</span>
+    <span style="color: #8B008B; font-weight: bold">return</span> logm(a)/np.log(<span style="color: #B452CD">2.0</span>)
+
+dim = <span style="color: #B452CD">4</span>
+Hamiltonian = np.zeros((dim,dim))
+<span style="color: #228B22">#number of lambda values</span>
+n = <span style="color: #B452CD">40</span>
+lmbd = np.linspace(<span style="color: #B452CD">0.0</span>,<span style="color: #B452CD">1.0</span>,n)
+Hx = <span style="color: #B452CD">2.0</span>
+Hz = <span style="color: #B452CD">3.0</span>
+<span style="color: #228B22"># Non-diagonal part as sigma_x tensor product with sigma_x</span>
+sx = np.matrix([[<span style="color: #B452CD">0</span>,<span style="color: #B452CD">1</span>],[<span style="color: #B452CD">1</span>,<span style="color: #B452CD">0</span>]])
+sx2 = Hx*np.kron(sx, sx)
+<span style="color: #228B22"># Diagonal part as sigma_z tensor product with sigma_z</span>
+sz = np.matrix([[<span style="color: #B452CD">1</span>,<span style="color: #B452CD">0</span>],[<span style="color: #B452CD">0</span>,-<span style="color: #B452CD">1</span>]])
+sz2 = Hz*np.kron(sz, sz)
+noninteracting = [<span style="color: #B452CD">0.0</span>, <span style="color: #B452CD">2.5</span>, <span style="color: #B452CD">6.5</span>, <span style="color: #B452CD">7.0</span>]
+D = np.diag(noninteracting)
+Eigenvalue = np.zeros((dim,n))
+
+<span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(n): 
+    Hamiltonian = lmbd[i]*(sx2+sz2)+D
+    <span style="color: #228B22"># diagonalize and obtain eigenvalues, not necessarily sorted</span>
+    EigValues, EigVectors = np.linalg.eig(Hamiltonian)
+    <span style="color: #228B22"># sort eigenvectors and eigenvalues</span>
+    permute = EigValues.argsort()
+    EigValues = EigValues[permute]
+    EigVectors = EigVectors[:,permute]
+    <span style="color: #228B22"># Compute density matrix for selected system state, here ground state</span>
+    DensityMatrix = np.zeros((dim,dim))
+    DensityMatrix = np.outer(EigVectors[:,<span style="color: #B452CD">0</span>],EigVectors[:,<span style="color: #B452CD">0</span>])
+    <span style="color: #228B22"># Plotting eigenvalues </span>
+    Eigenvalue[<span style="color: #B452CD">0</span>,i] = EigValues[<span style="color: #B452CD">0</span>]
+    Eigenvalue[<span style="color: #B452CD">1</span>,i] = EigValues[<span style="color: #B452CD">1</span>]
+    Eigenvalue[<span style="color: #B452CD">2</span>,i] = EigValues[<span style="color: #B452CD">2</span>]
+    Eigenvalue[<span style="color: #B452CD">3</span>,i] = EigValues[<span style="color: #B452CD">3</span>]
+plt.plot(lmbd, Eigenvalue[<span style="color: #B452CD">0</span>,:] ,<span style="color: #CD5555">&#39;b-&#39;</span>,lmbd, Eigenvalue[<span style="color: #B452CD">1</span>,:],<span style="color: #CD5555">&#39;g-&#39;</span>,)
+plt.plot(lmbd, Eigenvalue[<span style="color: #B452CD">2</span>,:] ,<span style="color: #CD5555">&#39;r-&#39;</span>,lmbd, Eigenvalue[<span style="color: #B452CD">3</span>,:],<span style="color: #CD5555">&#39;y-&#39;</span>,)
+plt.xlabel(<span style="color: #CD5555">&#39;$\lambda$&#39;</span>)
+plt.ylabel(<span style="color: #CD5555">&#39;Eigenvalues&#39;</span>)
+plt.show()
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<h3 id="first-exercise">First exercise </h3>
+
+<p>The exercises we present each week are meant to build the basis for
+the two projects we will work on during the semester.  The first
+project deals with implementing the so-called <b>Phase Estimation</b> and
+<b>Variational Quantum Eigensolver</b> algorithms for finding the eigenvalues and eigenvectors of selected Hamiltonians.
+Feel free to use the above codes in order to get started.
+</p>
+
+<ol>
+<p><li> Write a function which sets up a one-qubit basis and apply the various Pauli matrices to these basis states.</li>
+<p><li> Apply the Hadamard and Phase gates to the same one-qubit basis states and study their actions on these states.</li>
+<p><li> Rewrite the Hamiltonian of Eq.&nbsp;<a href="#mjx-eqn-7">(7)</a> in terms of the Pauli \( x \) and \( z \) matrices and find the two eigenvalues as function of the interaction strength \( \lambda \).</li>
+<p><li> Study the behavior of these eigenstates as functions of the interaction strength \( \lambda \).</li>
+<p><li> Using the one-qubit basis write a code which sets up a two-qubit basis and encodes this basis.</li>
+<p><li> Use the Hamiltonian for the two-qubit example to find the eigenpairs as functions of the interaction strength \( \lambda \) and study the final eigenvectors as functions of the admixture of the original basis states.</li> 
+</ol>
+<p>
+<h2 id="the-next-lecture">The next lecture </h2>
+
+<div class="alert alert-block alert-block alert-text-normal">
+<b>In our next lecture, we will discuss</b>
+<p>
+<ol>
+<p><li> how much information is stored in a qubit</li>
+<p><li> show how to make measurements on composite states</li>
+<p><li> Density matrices and Entropy</li>
+<p><li> Schmidt decomposition and entanglement</li>
+</ol>
+<p>
+<p>Chapter 4 of Scherrer's text contains useful discussions of several of these topics.</p>
+</div>
+
+
+<!-- ===== Appendix: unitary transformations and ways to solve the Schroedinger equation ===== -->
+
+<p>To be added.</p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 1999-2023, Morten Hjorth-Jensen. Released under CC Attribution-NonCommercial 4.0 license
+</center>
+</section>
+
+
+
+</div> <!-- class="slides" -->
+</div> <!-- class="reveal" -->
+
+<script src="reveal.js/lib/js/head.min.js"></script>
+<script src="reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+  // Display navigation controls in the bottom right corner
+  controls: true,
+
+  // Display progress bar (below the horiz. slider)
+  progress: true,
+
+  // Display the page number of the current slide
+  slideNumber: true,
+
+  // Push each slide change to the browser history
+  history: false,
+
+  // Enable keyboard shortcuts for navigation
+  keyboard: true,
+
+  // Enable the slide overview mode
+  overview: true,
+
+  // Vertical centering of slides
+  //center: true,
+  center: false,
+
+  // Enables touch navigation on devices with touch input
+  touch: true,
+
+  // Loop the presentation
+  loop: false,
+
+  // Change the presentation direction to be RTL
+  rtl: false,
+
+  // Turns fragments on and off globally
+  fragments: true,
+
+  // Flags if the presentation is running in an embedded mode,
+  // i.e. contained within a limited portion of the screen
+  embedded: false,
+
+  // Number of milliseconds between automatically proceeding to the
+  // next slide, disabled when set to 0, this value can be overwritten
+  // by using a data-autoslide attribute on your slides
+  autoSlide: 0,
+
+  // Stop auto-sliding after user input
+  autoSlideStoppable: true,
+
+  // Enable slide navigation via mouse wheel
+  mouseWheel: false,
+
+  // Hides the address bar on mobile devices
+  hideAddressBar: true,
+
+  // Opens links in an iframe preview overlay
+  previewLinks: false,
+
+  // Transition style
+  transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+  // Transition speed
+  transitionSpeed: 'default', // default/fast/slow
+
+  // Transition style for full page slide backgrounds
+  backgroundTransition: 'default', // default/none/slide/concave/convex/zoom
+
+  // Number of slides away from the current that are visible
+  viewDistance: 3,
+
+  // Parallax background image
+    //parallaxBackgroundImage: '', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
+
+  // Parallax background size
+  //parallaxBackgroundSize: '' // CSS syntax, e.g. "2100px 900px"
+
+  theme: Reveal.getQueryHash().theme, // available themes are in reveal.js/css/theme
+    transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/none
+
+});
+
+Reveal.initialize({
+  dependencies: [
+      // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+      { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+
+      // Interpret Markdown in <section> elements
+      { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+      // Syntax highlight for <code> elements
+      { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+
+      // Zoom in and out with Alt+click
+      { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+
+      // Speaker notes
+      { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+      // Remote control your reveal.js presentation using a touch device
+      //{ src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+      // MathJax
+      //{ src: 'reveal.js/plugin/math/math.js', async: true }
+  ]
+});
+
+Reveal.initialize({
+
+  // The "normal" size of the presentation, aspect ratio will be preserved
+  // when the presentation is scaled to fit different resolutions. Can be
+  // specified using percentage units.
+  width: 1170,  // original: 960,
+  height: 700,
+
+  // Factor of the display size that should remain empty around the content
+  margin: 0.1,
+
+  // Bounds for smallest/largest possible scale to apply to content
+  minScale: 0.2,
+  maxScale: 1.0
+
+});
+</script>
+
+<!-- begin footer logo
+<div style="position: absolute; bottom: 0px; left: 0; margin-left: 0px">
+<img src="somelogo.png">
+</div>
+   end footer logo -->
+
+
+
+
+</body>
+</html>
