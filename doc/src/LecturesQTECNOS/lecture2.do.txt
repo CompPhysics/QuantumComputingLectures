@@ -1,9 +1,6 @@
-TITLE: January 30-February 3,2023: Composite systems, Tensor products and Hamiltonians
-AUTHOR: Morten Hjorth-Jensen {copyright, 1999-present|CC BY-NC} at Department of Physics, University of Oslo, Norway & Department of Physics and Astronomy and Facility for Rare Isotope Beams, Michigan State University, USA
-DATE: today
-
-
-
+TITLE: Quantum Computing Lectures for  Nano and Quantum Workshop
+AUTHOR: Morten Hjorth-Jensen {copyright, 1999-present|CC BY-NC} at Department of Physics and Center for Computing in Science Education, University of Oslo, Norway & Department of Physics and Astronomy and Facility for Rare Isotope Beams, Michigan State University, East Lansing, Michigan, USA
+DATE: Cali, Colombia, December 4-8, 2023
 
 
 
