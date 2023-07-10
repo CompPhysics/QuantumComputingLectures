@@ -8,7 +8,7 @@ DATE: Cali, Colombia, December 4-8, 2023
 
 ===== Summary from last week and plans for this week =====
 
-!bblock  Last week we:
+!bblock  During the first lecture we:
 o defined the state vector and the associated notation
 o introduced the inner product and showed how to calculate it in an orthonormal basis
 o introduced outer products and projection operators
@@ -23,8 +23,6 @@ o Quantum operations and special matrices
 o Simple Hamiltonians and other operators
 o First exercise set
 !eblock
-
-"Video of lecture":"https://youtu.be/ucXpNSISzOw"
 
 
 
