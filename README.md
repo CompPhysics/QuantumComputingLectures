@@ -1,12 +1,23 @@
 # Quantum Computing Lectures for  Nano and Quantum Workshop, Cali, Colombia, December 4-8, 2023
 
-
+The aim of this set of lectures is to demonstrate how we can use
+quantum computing to find for example the eigenvalues and eigenstates
+of quantum mechanical many-body systems.  After having introduced some
+of the basic notations and formalism (see below), we focus on how to
+implement the Variational Quantum Eigensolver (VQE) algorithm for
+finding the eigenvalues of selected Hamiltonians.  We will focus on a
+well-studied model for the Hamiltonian, the so-called Lipkin
+model. Using this model we will show how to find the eigenvalues.
+Hands-on jupyter-notebooks will be used to demonstrate how one can
+simulate such quantum mechanical systems, using either own codes or
+the the functionality provided by a software like Qiskit
+https://qiskit.org/.
 
 
 
 ## Tentative content (more material to be added continuously)
   - Mathematical notation, Hilbert spaces and operators
-  - Description of Quantum Systems and one-qubit systems 
+  - Description of Quantum Systems and one- and many-qubit systems 
   - States in Hilbert Space, pure and mixed states
   - Operators and gates
   - Spectral decomposition and measurements
@@ -17,7 +28,7 @@
   - Solving eigenvalue problems using the VQE
   - Implementing VQE efficiently for Hamiltonian models (Lipkin model)
 
-### Recommended textbooks:
-- Wolfgang Scherer, Mathematics of Quantum Computing, see https://link.springer.com/book/10.1007/978-3-030-12358-1
-- Robert Hundt, Quantum Computing for Programmers, https://www.cambridge.org/core/books/quantum-computing-for-programmers/BA1C887BE4AC0D0D5653E71FFBEF61C6
+
+The notes (either in pdf, html or as jupyter-notebooks) can be accessed from https://github.com/CompPhysics/QuantumComputingLectures/tree/gh-pages/doc/pub
+
 
