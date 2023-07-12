@@ -10,7 +10,7 @@ well-studied model for the Hamiltonian, the so-called Lipkin
 model. Using this model we will show how to find the eigenvalues.
 Hands-on jupyter-notebooks will be used to demonstrate how one can
 simulate such quantum mechanical systems, using either own codes or
-the the functionality provided by a software like Qiskit
+the functionality provided by a software like Qiskit
 https://qiskit.org/.
 
 
