@@ -15,7 +15,6 @@ DATE: Cali, Colombia, December 4-8, 2023
   o Setting up quantum circuits and simple algorithms
 !eblock
 
-* "Video of lecture":"https://youtu.be/uf9xwcl2IEE"
 
 =====  Quantum gates, reminder from last week =====
 
