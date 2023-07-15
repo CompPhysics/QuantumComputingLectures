@@ -13,6 +13,7 @@ DATE: Cali, Colombia, December 4-8, 2023
   o Introduction to "Qiskit":"https://qiskit.org/"
   o Defining one-, two- and three-qubit gates
   o Setting up quantum circuits and simple algorithms
+  o Introducing the Variational Quantum Eigensolver
 !eblock
 
 
