@@ -7,13 +7,14 @@ DATE: Cali, Colombia, December 4-8, 2023
 !split
 ===== Overview of first lecture =====
 
-!bblock Basics in Linear Algebra, The Hilbert Space, Operators on Hilbert Spaces, States and qubits
+!bblock Definitions:Basics in Linear Algebra, The Hilbert Space, Operators on Hilbert Spaces, States and qubits
   o Mathematical notation, Hilbert spaces and operators
   o Description of Quantum Systems and one-qubit systems 
   o States in Hilbert Space, pure and mixed states
   o Operators and gates
 _Reading recommendation_: "Scherer, Mathematics of Quantum Computations, chapter 2":"https://link.springer.com/book/10.1007/978-3-030-12358-1"
 !eblock
+
 
 ===== Defining basis states and quantum mechanical operators =====
 
