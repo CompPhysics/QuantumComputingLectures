@@ -58,23 +58,16 @@ doconce format html lecture3.do.txt --html_style=bootstrap --pygments_html_style
                2,
                None,
                'variational-quantum-eigensolver'),
-              ('Expectation values', 2, None, 'expectation-values'),
-              ('Measurement', 2, None, 'measurement'),
-              ('Quantum computing and solving  the eigenvalue problem for the '
-               'Lipkin model',
+              ('VQE and efficient computations of gradients',
                2,
                None,
-               'quantum-computing-and-solving-the-eigenvalue-problem-for-the-lipkin-model'),
-              ('Implementing the  VQE method, one qubit system',
-               2,
-               None,
-               'implementing-the-vqe-method-one-qubit-system'),
+               'vqe-and-efficient-computations-of-gradients'),
               ('Setting up the matrix', 2, None, 'setting-up-the-matrix'),
               ('Implementing the VQE', 2, None, 'implementing-the-vqe'),
-              ('A smarter way of doing this',
+              ('Gradient descent and calculations of gradients',
                2,
                None,
-               'a-smarter-way-of-doing-this'),
+               'gradient-descent-and-calculations-of-gradients'),
               ('Additional material on the Lipkin model',
                2,
                None,
@@ -137,13 +130,10 @@ MathJax.Hub.Config({
      <!-- navigation toc: --> <li><a href="#rewrite-in-terms-of-quasispin-operators" style="font-size: 80%;"><b>Rewrite in terms of quasispin operators</b></a></li>
      <!-- navigation toc: --> <li><a href="#rewriting-the-hamiltonian" style="font-size: 80%;"><b>Rewriting the Hamiltonian</b></a></li>
      <!-- navigation toc: --> <li><a href="#variational-quantum-eigensolver" style="font-size: 80%;"><b>Variational Quantum Eigensolver</b></a></li>
-     <!-- navigation toc: --> <li><a href="#expectation-values" style="font-size: 80%;"><b>Expectation values</b></a></li>
-     <!-- navigation toc: --> <li><a href="#measurement" style="font-size: 80%;"><b>Measurement</b></a></li>
-     <!-- navigation toc: --> <li><a href="#quantum-computing-and-solving-the-eigenvalue-problem-for-the-lipkin-model" style="font-size: 80%;"><b>Quantum computing and solving  the eigenvalue problem for the Lipkin model</b></a></li>
-     <!-- navigation toc: --> <li><a href="#implementing-the-vqe-method-one-qubit-system" style="font-size: 80%;"><b>Implementing the  VQE method, one qubit system</b></a></li>
+     <!-- navigation toc: --> <li><a href="#vqe-and-efficient-computations-of-gradients" style="font-size: 80%;"><b>VQE and efficient computations of gradients</b></a></li>
      <!-- navigation toc: --> <li><a href="#setting-up-the-matrix" style="font-size: 80%;"><b>Setting up the matrix</b></a></li>
      <!-- navigation toc: --> <li><a href="#implementing-the-vqe" style="font-size: 80%;"><b>Implementing the VQE</b></a></li>
-     <!-- navigation toc: --> <li><a href="#a-smarter-way-of-doing-this" style="font-size: 80%;"><b>A smarter way of doing this</b></a></li>
+     <!-- navigation toc: --> <li><a href="#gradient-descent-and-calculations-of-gradients" style="font-size: 80%;"><b>Gradient descent and calculations of gradients</b></a></li>
      <!-- navigation toc: --> <li><a href="#additional-material-on-the-lipkin-model" style="font-size: 80%;"><b>Additional material on the Lipkin model</b></a></li>
      <!-- navigation toc: --> <li><a href="#properties-of-the-lipkin-model" style="font-size: 80%;"><b>Properties of the Lipkin model</b></a></li>
      <!-- navigation toc: --> <li><a href="#commutation-relations-for-the-hamiltonian" style="font-size: 80%;"><b>Commutation relations for the Hamiltonian</b></a></li>
@@ -316,7 +306,7 @@ H_2 = \frac{1}{2} W \left( -N + J_+ J_- + J_- J_+ \right).
 \end{equation}
 $$
 
-<p>We have thus expressed the Hamiltonian in term of the quasi-spin operators.</p>
+<p>We have thus expressed the Hamiltonian in term of the quasi-spin operators. See additional material for more details.</p>
 
 <!-- !split -->
 <h2 id="variational-quantum-eigensolver" class="anchor">Variational Quantum Eigensolver </h2>
@@ -393,442 +383,9 @@ characterize the ground state \( |\phi(\theta_{\text{min}})\rangle \) and
 an estimate for the ground state energy
 \( \langle\psi(\theta_{\text{min}})|H|\psi(\theta_{\text{min}})\rangle \).
 </p>
-<h2 id="expectation-values" class="anchor">Expectation values </h2>
-
-<p>To execute the second step of VQE, we need to understand how
-expectation values of operators can be estimated via quantum computers
-by post-processing measurements of quantum circuits in different
-basis. To rotate bases, one uses the basis rotator \( R_\sigma \) which is
-defined for each Pauli gate \( \sigma \) to be
-</p>
-
-$$
-\begin{align}
-R_{\sigma} = H, & \text{if} \ \sigma = X,
-\end{align} \label{eq:auto8}
-$$
-
-<p>and</p>
-$$
-\begin{align}
-HS^{\dagger}, & \text{if} \ \sigma = Y,
-\label{_auto5}
-\end{align}
-$$
-
-<p>and</p>
-$$
-\begin{align}
-I, & \text{if} \ \sigma = Z.
-\label{_auto6}
-\end{align}
-$$
-
-<p>We can show that these rotations allow us to measure the eigenvalues of the Pauli operators. The eigenvectors of the Pauli \( X \) gate are</p>
-$$
-\vert\pm\rangle = \frac{\vert 0\rangle \pm \vert 1\rangle}{\sqrt{2}},
-$$
-
-<p>with eigenvalues \( \pm 1 \).
-Acting on the eigenstates with the rotation in eq. \eqref{eq:auto8} gives
-</p>
-$$
-H\vert +\rangle = +1\vert 0\rangle,
-$$
-
-<p>and</p>
-$$
-H\vert -\rangle = -1\vert 1\rangle.
-$$
-
-<p>Any single-qubit state can be written as a linear combination of these eigenvectors,</p>
-$$
-\vert \psi\rangle = \alpha \vert +\rangle + \beta \vert -\rangle.
-$$
-
-<p>We then have the following expectation value for the Pauli \( X \) operator</p>
-$$
-\expval{X} = \bra{\psi} X \vert \psi\rangle = |\alpha|^2 - |\beta|^2.
-$$
-
-<p>However, we can only measure the qubits in the computational basis. Applying the rotation in eq. \eqref{eq:auto8} to our state gives</p>
-$$
-H \vert \psi\rangle = \alpha \vert 0\rangle - \beta \vert 1\rangle.
-$$
-
-<p>This tells us that we are able to estimate \( |\alpha|^2 \) and
-\( |\beta|^2 \) (and hence the expectation value of the Pauli \( X \)
-operator) by using the rotation in eq. \eqref{eq:auto8} and measure the
-resulting state in the computational basis. We can show this for the
-Pauli \( Z \) and Pauli \( Y \) similarly.
-</p>
-
-<p>Note the following identity of the basis rotator</p>
-$$
-R^\dagger_\sigma Z R_\sigma = \sigma,
-$$
-
-<p>which follows from the fact that \( HZH=X \) and \( SXS^\dagger=Y \). With this, we see that the expectation value of an arbitrary
-Pauli-gate \( \sigma \) in the state \( \vert\psi\rangle \) can be expressed as a linear combination of probabilities
-</p>
-$$
-\begin{align}
-E_{\psi}(\sigma)
-&= \langle \psi\vert\sigma\vert\psi\rangle \nonumber \\
-&=\langle\psi\vert R_{\sigma}^{\dagger}ZR_{\sigma}\vert\psi\rangle =\langle \phi\vert Z\vert \phi\rangle \nonumber \\
-&=\langle\phi\vert\left(\sum_{x\in\{0,1\}}(-1)^x\vert x\rangle\langle x\vert\right)\vert\phi\rangle \nonumber \\
-&=\sum_{x\in\{0,1\}}(-1)^x\vert\langle x\vert \phi\rangle\vert^2\nonumber \\
-&=\sum_{x\in\{0,1\}}(-1)^xP(\vert \phi\rangle\to\vert x\rangle),
-\label{_auto7}
-\end{align}
-$$
-
-<p>where \( \vert \phi\rangle=\vert R_\sigma\phi\rangle \) and
-\( P(\vert \phi\rangle\to\vert x\rangle \) is the probability that the state
-\( \vert \phi\rangle \) collapses to the state \( \vert x\rangle \) when measured. This can
-be extended to any arbitrary Pauli string: consider the string of
-Pauli operators \( P=\bigotimes_{p\in Q}\sigma_p \) which acts
-non-trivially on the set of qubits \( Q \) which is a subset of the total
-set of \( n \) qubits in the system. Then
-</p>
-
-$$
-\begin{align}
-E_{\psi}\left(P\right)
-&=\langle \psi\vert\left(\bigotimes_{p\in Q}\sigma_p\right)\vert \psi\rangle \nonumber \\
-&=\langle \psi\vert\left(\bigotimes_{p\in Q}\sigma_p\right)
-\left(\bigotimes_{q\notin Q}I_q\right)\vert \psi\rangle \nonumber \\
-&=\langle \psi\vert\left(\bigotimes_{p \in Q}R_{\sigma_p}^{\dagger}Z_pR_{\sigma_p}\right)
-\left(\bigotimes_{q\notin Q}I_q\right)\vert \psi\rangle \nonumber \\
-&=
-\langle \psi\vert\left(\bigotimes_{p \in Q}R_{\sigma_p}^{\dagger}\right)
-\left(\bigotimes_{p \in Q}Z_p\right)
-\left(\bigotimes_{q\notin Q}I_q\right)
-\left(\bigotimes_{p \in Q}R_{\sigma_p}\right)\vert \psi\rangle \nonumber 
-\\
-&=
-\langle \phi\vert
-\left(\bigotimes_{p \in Q}Z_p\right)
-\left(\bigotimes_{q\notin Q}I_q\right)
-\vert \phi\rangle \nonumber \\
-&=
-\langle \phi\vert
-\left(\bigotimes_{p\in Q}\sum_{x_p\in\{0_p,1_p\}}(-1)^{x_p}\vert x_p\rangle\langle x_p\vert\right)
-\left(\bigotimes_{q\notin Q}\sum_{y_q\in\{0_q,1_q\}}\vert y_q\rangle\langle y_q\vert\right)
-\vert \phi\rangle 
-\nonumber 
-\\
-&=
-\langle \phi\vert
-\left(\sum_{x\in\{0,1\}^n}(-1)^{\sum_{p\in Q}x_p}\vert x\rangle\langle x\vert\right)
-\vert \phi\rangle 
-\nonumber 
-\\
-&=
-\sum_{x\in\{0,1\}^n}(-1)^{\sum_{p\in Q}x_p}\vert\langle x\vert\vert \phi\rangle\vert^2
-\nonumber 
-\\
-&=
-\sum_{x\in\{0,1\}^n}(-1)^{\sum_{p\in Q}x_p}P(\vert \phi\rangle\to\vert x\rangle),
-\label{_auto8}
-\end{align}
-$$
-
-<p>where \( \vert \phi\rangle=\vert \bigotimes_{p\in
-Q}R_{\sigma_p}\psi\rangle \). Finally, because the expectation value is
-linear
-</p>
-$$
-\begin{align}
-E_\psi\left(\sum_{m}\lambda_mP_m\right) = \sum_m\lambda_mE_\psi(P_m),
-\label{_auto9}
-\end{align}
-$$
-
-<p>one can estimate any observable that can be written as a linear combination of Pauli-string terms. </p>
-<h2 id="measurement" class="anchor">Measurement </h2>
-
-<p>To estimate the probability \( P(\vert \phi\rangle\to \vert x\rangle) \) from the
-previous section, one prepares the state \( \vert \phi\rangle \) on a quantum
-computer and measures it, and then repeats this process (prepare and
-measure) several times. The probability \( P(\vert \phi\rangle\to \vert x\rangle) \) is
-estimated to be the number of times that one measures the bit-string
-\( x \) divided by the total number of measurements that one makes; that
-is
-</p>
-
-$$
-\begin{align}
-P(\vert \phi\rangle\to \vert x\rangle\rangle \approx \sum_{m=1}^M\frac{x_m}{M},
-\label{_auto10}
-\end{align}
-$$
-
-<p>where \( x_m=1 \)
-if the result of measurement is \( x \) and  \( 0 \) if the result of measurement is not \( x \).
-</p>
-
-<p>By the law of large numbers the approximation approaches equality as
-\( M \) goes to infinity
-</p>
-
-$$
-\begin{align}
-P(\vert \phi\rangle\to \vert x\rangle) = \lim_{M\to\infty}\sum_{m=1}^M\frac{x_m}{M}.
-\label{_auto11}
-\end{align}
-$$
-
-<p>As we obviously do not have infinite time nor infinite quantum
-computers (which could be run in parallel), we must truncate our
-number of measurement \( M \) to a finite, but sufficiently large
-number. More precisely, for precision \( \epsilon \), each expectation
-estimation subroutine within VQE requires \( \mathcal{O}(1/\epsilon^2) \)
-samples from circuits with depth \( \mathcal{O}(1) \).
-</p>
 
 <!-- !split -->
-<h2 id="quantum-computing-and-solving-the-eigenvalue-problem-for-the-lipkin-model" class="anchor">Quantum computing and solving  the eigenvalue problem for the Lipkin model </h2>
-
-<p>We turn now to a simpler variant of the Lipkin model without the \( W \)-term and a total spin of \( J=1 \) only as maximum value of the spin.
-This corresponds to a system with \( N=2 \) particles (fermions in our case).
-Our Hamiltonian is given by the quasispin operators (see below) 
-</p>
-$$
-     \hat{H} = \epsilon\hat{J}_z -\frac{1}{2}V(\hat{J}_+\hat{J}_++\hat{J}_-\hat{J}_-).
-$$
-
-<p>As discussed
-previously, the quasispin operators act like lowering and raising angular momentum
-operators.
-</p>
-
-<p>With these properties we can calculate the Hamiltonian
-matrix for the Lipkin model by computing the various matrix elements
-</p>
-$$
-\begin{equation}
-\langle JJ_z|H|JJ_z'\rangle,
-\label{_auto12}
-\end{equation}
-$$
-
-<p>where the non-zero elements are given by</p>
-$$
-\begin{split}
-\langle JJ_z|H|JJ_z'\rangle & = \epsilon J_z\\
-\langle JJ_z|H|JJ_z'\pm 2\rangle & = \langle JJ_z\pm 2|H|JJ_z'\rangle \\ &= -\frac{1}{2}VC,
-\end{split}
-$$
-
-<p>where \( C \) is the Clebsch-Gordan coefficients (from the raising and lowering operators) one gets when
-\( J_{\pm}^2 \) operates on the state \( |JJ_z\rangle \).  Using the above
-definitions we can calculate the exact solution to the Lipkin model.
-</p>
-
-<p>With the \( V \)-interaction terms, we obtain the following Hamiltonian matrix</p>
-$$
-\begin{equation}
-\begin{pmatrix}-\epsilon & 0 & -V\\
- 0&0&0\\
- -V&0&\epsilon
-\end{pmatrix}
-\label{_auto13}
-\end{equation}
-$$
-
-<p>The following <b>python</b> code sets up the above matrix and finds the pertinent eigenvalues.</p>
-
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="cell border-box-sizing code_cell rendered">
-  <div class="input">
-    <div class="inner_cell">
-      <div class="input_area">
-        <div class="highlight" style="background: #f8f8f8">
-  <pre style="line-height: 125%;"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">qiskit</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">qiskit.visualization</span> <span style="color: #008000; font-weight: bold">import</span> circuit_drawer
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">qiskit.quantum_info</span> <span style="color: #008000; font-weight: bold">import</span> Statevector
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">import</span> figure
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">qiskit</span> <span style="color: #008000; font-weight: bold">import</span> QuantumRegister, QuantumCircuit, ClassicalRegister, Aer, assemble
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">qiskit.providers.aer.noise</span> <span style="color: #008000; font-weight: bold">import</span> NoiseModel
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">pylatexenc</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">qiskit.algorithms</span> <span style="color: #008000; font-weight: bold">import</span> VQE
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">qiskit.utils</span> <span style="color: #008000; font-weight: bold">import</span> QuantumInstance
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">qiskit.opflow</span> <span style="color: #008000; font-weight: bold">import</span> X, Z, I, Y
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">qiskit.circuit</span> <span style="color: #008000; font-weight: bold">import</span> Parameter
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">qiskit.algorithms.optimizers</span> <span style="color: #008000; font-weight: bold">import</span> ADAM
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">qiskit.opflow</span> <span style="color: #008000; font-weight: bold">import</span> AerPauliExpectation
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">qiskit</span> <span style="color: #008000; font-weight: bold">import</span> IBMQ
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">cmath</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">pandas</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">pd</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">scipy.sparse</span> <span style="color: #008000; font-weight: bold">import</span> diags
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy.linalg</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">LA</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">IPython.display</span> <span style="color: #008000; font-weight: bold">import</span> Image
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">warnings</span>
-warnings<span style="color: #666666">.</span>filterwarnings(<span style="color: #BA2121">&#39;ignore&#39;</span>)
-pi<span style="color: #666666">=</span>np<span style="color: #666666">.</span>pi
-</pre>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="output_wrapper">
-    <div class="output">
-      <div class="output_area">
-        <div class="output_subarea output_stream output_stdout output_text">          
-        </div>
-      </div>
-    </div>
-  </div>
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="cell border-box-sizing code_cell rendered">
-  <div class="input">
-    <div class="inner_cell">
-      <div class="input_area">
-        <div class="highlight" style="background: #f8f8f8">
-  <pre style="line-height: 125%;"><span style="color: #408080; font-style: italic">#function that sorts eigenvalues with its eigenvectors in accending order</span>
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">eigen</span>(A):
-    eigenValues, eigenVectors <span style="color: #666666">=</span> LA<span style="color: #666666">.</span>eig(A)
-    idx <span style="color: #666666">=</span> np<span style="color: #666666">.</span>argsort(eigenValues)
-    eigenValues <span style="color: #666666">=</span> eigenValues[idx]
-    eigenVectors <span style="color: #666666">=</span> eigenVectors[:,idx]
-    <span style="color: #008000; font-weight: bold">return</span> (eigenValues, eigenVectors) 
-
-<span style="color: #408080; font-style: italic">#one body expectation value</span>
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">one_body</span>(E,N):
-  k <span style="color: #666666">=</span> N<span style="color: #666666">/2</span>
-  m <span style="color: #666666">=</span> np<span style="color: #666666">.</span>arange(<span style="color: #666666">-</span>k,k<span style="color: #666666">+1</span>,<span style="color: #666666">1</span>) <span style="color: #408080; font-style: italic"># Since the collective space is Omega+1</span>
-  <span style="color: #008000; font-weight: bold">return</span> E<span style="color: #666666">*</span>np<span style="color: #666666">.</span>diag(m) <span style="color: #408080; font-style: italic">#return a matrix where its diagonal elemens are epsilon*K_0</span>
-
-<span style="color: #408080; font-style: italic">#two body expectation value</span>
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">two_body</span>(V,N):
-  k <span style="color: #666666">=</span> N<span style="color: #666666">/2</span>
-  m <span style="color: #666666">=</span> np<span style="color: #666666">.</span>arange(<span style="color: #666666">-</span>k,k<span style="color: #666666">+1</span>,<span style="color: #666666">1</span>)
-  left <span style="color: #666666">=</span>np<span style="color: #666666">.</span>zeros(<span style="color: #008000">len</span>(m)<span style="color: #666666">-2</span>,dtype<span style="color: #666666">=</span><span style="color: #008000">complex</span>)
-  right <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(<span style="color: #008000">len</span>(m)<span style="color: #666666">-2</span>,dtype<span style="color: #666666">=</span><span style="color: #008000">complex</span>)
-  diag <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(<span style="color: #008000">len</span>(m),dtype<span style="color: #666666">=</span><span style="color: #008000">complex</span>)
-  <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(left)):
-    CG <span style="color: #666666">=</span> cmath<span style="color: #666666">.</span>sqrt(k<span style="color: #666666">*</span>(k<span style="color: #666666">+1</span>)<span style="color: #666666">-</span>(m[i]<span style="color: #666666">+2</span>)<span style="color: #666666">*</span>(m[i]<span style="color: #666666">+1</span>))<span style="color: #666666">*</span>cmath<span style="color: #666666">.</span>sqrt(k<span style="color: #666666">*</span>(k<span style="color: #666666">+1</span>)<span style="color: #666666">-</span>m[i]<span style="color: #666666">*</span>(m[i]<span style="color: #666666">+1</span>)) <span style="color: #408080; font-style: italic">#calculate Clebsch-Gordan Coefficients </span>
-    left[i] <span style="color: #666666">=</span> CG
-    right[i] <span style="color: #666666">=</span> CG
-  k <span style="color: #666666">=</span> [left,diag,right]
-  offset <span style="color: #666666">=</span> [<span style="color: #666666">-2</span>,<span style="color: #666666">0</span>,<span style="color: #666666">2</span>]
-  <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">-0.5*</span>V<span style="color: #666666">*</span>diags(k,offset)<span style="color: #666666">.</span>toarray() <span style="color: #408080; font-style: italic">#return a matrix where its off digonal elements are (1/2)V(K^2_+ + K^2_-)</span>
-
-<span style="color: #408080; font-style: italic">#full expectation value</span>
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">quasi_spin</span>(E,V,N):
-  ob <span style="color: #666666">=</span> one_body(E,N)
-  tb <span style="color: #666666">=</span> two_body(V,N)
-  H <span style="color: #666666">=</span> ob<span style="color: #666666">+</span>tb 
-  e,v <span style="color: #666666">=</span> eigen(H) <span style="color: #408080; font-style: italic"># find the eigenvalues of the Hamiltonian</span>
-  <span style="color: #008000; font-weight: bold">return</span> e,H
-
-<span style="color: #408080; font-style: italic">#converts chi to V</span>
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Vp</span>(E,omega,chi):
-  <span style="color: #008000; font-weight: bold">return</span> (chi<span style="color: #666666">*</span>E)<span style="color: #666666">/</span>(omega<span style="color: #666666">-1</span>)
-</pre>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="output_wrapper">
-    <div class="output">
-      <div class="output_area">
-        <div class="output_subarea output_stream output_stdout output_text">          
-        </div>
-      </div>
-    </div>
-  </div>
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="cell border-box-sizing code_cell rendered">
-  <div class="input">
-    <div class="inner_cell">
-      <div class="input_area">
-        <div class="highlight" style="background: #f8f8f8">
-  <pre style="line-height: 125%;"><span style="color: #408080; font-style: italic">#parameters</span>
-E <span style="color: #666666">=</span> <span style="color: #666666">1</span>
-chi <span style="color: #666666">=</span> np<span style="color: #666666">.</span>arange(<span style="color: #666666">0</span>,<span style="color: #666666">2.1</span>,<span style="color: #666666">0.1</span>)
-omega <span style="color: #666666">=</span> <span style="color: #666666">2</span>
-
-EV0 <span style="color: #666666">=</span> []
-EV1 <span style="color: #666666">=</span> []
-EV2 <span style="color: #666666">=</span> []
-Ham <span style="color: #666666">=</span> []
-<span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> chi:
-  v <span style="color: #666666">=</span> Vp(E,omega,i)
-  EigenV,H <span style="color: #666666">=</span> quasi_spin(E,v,omega) <span style="color: #408080; font-style: italic">#return eigenvalues and Hamiltonian</span>
-  Ham<span style="color: #666666">.</span>append(H)
-  EV0<span style="color: #666666">.</span>append(EigenV[<span style="color: #666666">0</span>])
-  EV1<span style="color: #666666">.</span>append(EigenV[<span style="color: #666666">1</span>])
-  EV2<span style="color: #666666">.</span>append(EigenV[<span style="color: #666666">2</span>])
-</pre>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="output_wrapper">
-    <div class="output">
-      <div class="output_area">
-        <div class="output_subarea output_stream output_stdout output_text">          
-        </div>
-      </div>
-    </div>
-  </div>
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="cell border-box-sizing code_cell rendered">
-  <div class="input">
-    <div class="inner_cell">
-      <div class="input_area">
-        <div class="highlight" style="background: #f8f8f8">
-  <pre style="line-height: 125%;">matrix <span style="color: #666666">=</span> pd<span style="color: #666666">.</span>DataFrame(Ham[<span style="color: #666666">5</span>]<span style="color: #666666">.</span>real)
-<span style="color: #008000">print</span>(<span style="color: #BA2121">&#39;Hamiltonian matrix&#39;</span>)
-matrix<span style="color: #666666">.</span>head()
-</pre>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="output_wrapper">
-    <div class="output">
-      <div class="output_area">
-        <div class="output_subarea output_stream output_stdout output_text">          
-        </div>
-      </div>
-    </div>
-  </div>
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="cell border-box-sizing code_cell rendered">
-  <div class="input">
-    <div class="inner_cell">
-      <div class="input_area">
-        <div class="highlight" style="background: #f8f8f8">
-  <pre style="line-height: 125%;">plt<span style="color: #666666">.</span>plot(chi,EV0)
-plt<span style="color: #666666">.</span>plot(chi,EV1)
-plt<span style="color: #666666">.</span>plot(chi,EV2)
-plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&#39;$\chi$&#39;</span>)
-plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&#39;Energy&#39;</span>)
-plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&#39;$\Omega=2$ exact Lipkin Model&#39;</span>)
-</pre>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="output_wrapper">
-    <div class="output">
-      <div class="output_area">
-        <div class="output_subarea output_stream output_stdout output_text">          
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- !split -->
-<h2 id="implementing-the-vqe-method-one-qubit-system" class="anchor">Implementing the  VQE method, one qubit system </h2>
+<h2 id="vqe-and-efficient-computations-of-gradients" class="anchor">VQE and efficient computations of gradients  </h2>
 
 <p>We start with a simple \( 2\times 2 \) Hamiltonian matrix expressed in
 terms of Pauli \( X \) and \( Z \) matrices, as discussed in the project text.
@@ -856,7 +413,7 @@ We can view \( H_0 \) as the non-interacting solution
 $$
 \begin{equation}
        H_0\vert 0 \rangle =E_1\vert 0 \rangle,
-\label{_auto14}
+\label{_auto5}
 \end{equation}
 $$
 
@@ -864,7 +421,7 @@ $$
 $$
 \begin{equation}
        H_0\vert 1\rangle =E_2\vert 1\rangle,
-\label{_auto15}
+\label{_auto6}
 \end{equation}
 $$
 
@@ -909,8 +466,6 @@ eigenvectors has therefore been interchanged when passing \( z=2/3 \). The
 value of the parameter \( V_{12} \) represents the strength of the coupling
 between the two states.
 </p>
-
-<!-- !split -->
 <h2 id="setting-up-the-matrix" class="anchor">Setting up the matrix </h2>
 
 
@@ -993,9 +548,6 @@ EigValues <span style="color: #666666">=</span> EigValues[permute]
     </div>
   </div>
 </div>
-
-
-<!-- !split -->
 <h2 id="implementing-the-vqe" class="anchor">Implementing the VQE </h2>
 
 <p>For a one-qubit system we can reach every point on the Bloch sphere
@@ -1115,94 +667,139 @@ ExpectationValues <span style="color: #666666">=</span> np<span style="color: #6
   </div>
 </div>
 
-<p>Clearly, this is not the very best way of proceeding. Rather, here we
-would compute the gradient and thereby find the minimum as function of
-the angles \( \theta \) and \( \phi \). Furthermore, in sertting up the
-angles, a better practice is to select random values for these.
+<p>Clearly, this is not the best way of proceeding. Rather, here we
+could try to find the optimal values for the parameters \( \theta \) and
+\( \phi \) through computation of their respective gradients and thereby
+find the minimum as function of the optimal angles \( \hat{\theta} \) and
+\( \hat{\phi} \).
 </p>
 
-<p>For the lectures of April 17-21, we will
-add code example using gradient descent for the one- and two-qubit case. We will follow
-<a href="https://journals.aps.org/pra/abstract/10.1103/PhysRevA.99.032331" target="_self"><tt>https://journals.aps.org/pra/abstract/10.1103/PhysRevA.99.032331</tt></a> as a guideline to calculate gradients of the Hamiltonian.
+<p>Let us now implement a classical gradient descent algorithm to the computation of the energies. 
+We will follow closely  <a href="https://journals.aps.org/pra/abstract/10.1103/PhysRevA.99.032331" target="_self"><tt>https://journals.aps.org/pra/abstract/10.1103/PhysRevA.99.032331</tt></a> in order to calculate gradients of the Hamiltonian.
 </p>
+<h2 id="gradient-descent-and-calculations-of-gradients" class="anchor">Gradient descent and calculations of gradients </h2>
 
-<!-- !split -->
-<h2 id="a-smarter-way-of-doing-this" class="anchor">A smarter way of doing this </h2>
-
-<p>The above approach means that we are setting up several matrix-matrix
-amd matrix-vector multiplications. Although straight forward it is not
-the most efficient way of doing this, in particular in case the
-matrices become large (and sparse). But there are some more important
-issues.
+<p>In order to optimize the VQE ansatz, we need to compute derivatives
+with respect to the variational parameters.  Here we develop first a
+simpler approach tailored to the one-qubit case. For this particular
+case, we have defined an ansatz in terms of the Pauli rotation
+matrices. These define an arbitrary one-qubit state on the Bloch
+sphere through the expression
 </p>
-
-<p>In a physical realization of these systems we cannot just multiply the
-state with the Hamiltonian. When performing a measurement we can only
-measure in one particular direction. For the computational basis
-states which we have, \( \vert 0\rangle \) and \( \vert 1\rangle \), we have
-to measure along the bases of the Pauli matrices and reconstruct the
-eigenvalues from these measurements.
-</p>
-
-<p>From our earlier discussions we know that the Pauli \( Z \) matrix has the above basis states as eigen states through</p>
 
 $$
-\boldsymbol{\sigma}_z\vert 0 \rangle = \boldsymbol{Z}\vert 0 \rangle=+1\vert 0 \rangle,
+\vert\psi\rangle = \vert \psi(\theta,\phi)\rangle =R_y(\phi)R_x(\theta)\vert 0 \rangle.
+$$
+
+<p>Each of these rotation matrices can be written in a more general form as</p>
+$$
+R_{i}(\gamma)=\exp{-(\imath\frac{\gamma}{2}\sigma_i)}=\cos{(\frac{\gamma}{2})}\boldsymbol{I}-\imath\sin{(\frac{\gamma}{2})}\boldsymbol{\sigma}_i,
+$$
+
+<p>where \( \sigma_i \) is one of the Pauli matrices \( \sigma_{x,y,z} \). </p>
+
+<p>It is easy to see that the derivative with respect to \( \gamma \) is</p>
+$$
+\frac{\partial R_{i}(\gamma)}{\partial \gamma}=-\frac{\gamma}{2}\boldsymbol{\sigma}_i R_{i}(\gamma).
+$$
+
+<p>We can now calculate the derivative of the expectation value of the
+Hamiltonian in terms of the angles \( \theta \) and \( \phi \). We have two
+derivatives 
+</p>
+$$
+\frac{\partial}{\partial \theta}\left[\langle \psi(\theta,\phi) \vert \boldsymbol{H}\vert \psi(\theta,\phi)\rangle\right]=\frac{\partial}{\partial \theta}\left[\langle\boldsymbol{H}(\theta,\phi)\rangle\right]=\langle \psi(\theta,\phi) \vert \boldsymbol{H}(-\frac{\imath}{2}\boldsymbol{\sigma}_x\vert \psi(\theta,\phi)\rangle+\hspace{0.1cm}\mathrm{h.c},
 $$
 
 <p>and</p>
 $$
-\boldsymbol{\sigma}_z\vert 1 \rangle = \boldsymbol{Z}\vert 1 \rangle=-1\vert 1 \rangle,
+\frac{\partial }{\partial \phi}\left[\langle \psi(\theta,\phi) \vert \boldsymbol{H}\vert \psi(\theta,\phi)\rangle\right]=\frac{\partial}{\partial \phi}\left[\langle\boldsymbol{H}(\theta,\phi)\rangle\right]=\langle \psi(\theta,\phi) \vert \boldsymbol{H}(-\frac{\imath}{2}\boldsymbol{\sigma}_y\vert \psi(\theta,\phi)\rangle+\hspace{0.1cm}\mathrm{h.c}. 
 $$
 
-<p>with eigenvalue \( -1 \).</p>
-
-<p>For the Pauli \( X \) matrix on the other hand we have</p>
-$$
-\boldsymbol{\sigma}_x\vert 0 \rangle = \boldsymbol{X}\vert 0 \rangle=+1\vert 1 \rangle,
-$$
-
-<p>and</p>
-$$
-\boldsymbol{\sigma}_x\vert 1 \rangle = \boldsymbol{X}\vert 1 \rangle=-1\vert 0 \rangle,
-$$
-
-<p>with eigenvalues \( 1 \) in both cases. The latter two equations tell us
-that the computational basis we have chosen, and in which we will
-prepare our states, is not an eigenbasis of the \( \sigma_x \) matrix.
+<p>This means that we have to calculate two additional expectation values
+in addition to the expectation value of the Hamiltonian itself.  If we
+stay with an ansatz for the single qubit states given by the above
+rotation operators, we can, following for example <a href="https://journals.aps.org/pra/abstract/10.1103/PhysRevA.99.032331" target="_self">the article by
+Maria Schuld et
+al</a>,
+show that the derivative of the expectation value of the Hamiltonian
+can be written as (we focus only on a given angle \( \phi \))
 </p>
 
-<p>We will thus try to rewrite the Pauli \( X \) matrix in terms of a Pauli \( Z \) matrix. Fortunately this can be done using the Hadamard matrix twice, that is</p>
-
 $$
-\boldsymbol{X}=\boldsymbol{\sigma}_x=\boldsymbol{H}\boldsymbol{Z}\boldsymbol{H}.
+\frac{\partial}{\partial \phi}\left[\langle\boldsymbol{H}(\phi)\rangle\right]=\frac{1}{2}\left[\langle\boldsymbol{H}(\phi+\frac{\pi}{2})\rangle-\langle\boldsymbol{H}(\phi-\frac{\pi}{2})\rangle\right].
 $$
 
-<p>The Pauli \( Y \) matrix can be written as</p>
-
-$$
-\boldsymbol{Y}=\boldsymbol{\sigma}_y=\boldsymbol{H}\boldsymbol{S}^{\dagger}\boldsymbol{Z}\boldsymbol{H}\boldsymbol{S},
-$$
-
-<p>where \( S \) is the phase matrix</p>
-$$
-S = \begin{bmatrix} 1 & 0 \\ 0 & \imath \end{bmatrix}.
-$$
-
-<p>From here and on we will denote the Pauli matrices by \( X \), \( Y \) and \( Z \) and we can write the expectation value of the Hamiltonian as</p>
-$$
-\langle \psi \vert (c+\mathcal{E})\boldsymbol{I} + (\Omega+\omega_z)\boldsymbol{Z} + \omega_x\boldsymbol{H}\boldsymbol{Z}\boldsymbol{H}\vert \psi \rangle,
-$$
-
-<p>which we can rewrite as</p>
-$$
-(c+\mathcal{E})\langle \psi \vert \boldsymbol{I}\vert \psi \rangle+(\Omega+\omega_z)\langle \psi \vert \boldsymbol{Z}\vert \psi \rangle+\omega_x\langle \psi \boldsymbol{H}\vert \boldsymbol{Z}\vert\boldsymbol{H}\psi \rangle.
-$$
-
-<p>The first and second term are to easy to perform a measurement on since we we just need to compute
-\( \langle \psi\vert \boldsymbol{I}\vert \psi\rangle \) and \( \langle \psi\vert \boldsymbol{Z}\vert \psi\rangle \).
-For the final term we need just to add the action of the Hadamard matrix and we are done.
+<p>To see this, consider again the definition of the rotation operators.
+We can write these operators as
 </p>
+
+$$
+R_i(\phi)=\exp{-\imath(\phi \boldsymbol{\sigma}_i)},
+$$
+
+<p>with \( \boldsymbol{sigma}_i \), with \( \boldsymbol{\sigma}_i \) being any of the Pauli
+matrices \( X \), \( Y \) and \( Z \). The latter can be generalized to other
+unitary matrices as well.
+The derivative with respect to \( \phi \) gives
+</p>
+$$
+\frac{\partial R_i(\phi)}{\partial \phi}=-\frac{\imath}{2} \boldsymbol{\sigma}_i\exp{-\imath(\phi \boldsymbol{\sigma}_i)}=-\frac{\imath}{2} \boldsymbol{\sigma} R_i(\phi).
+$$
+
+<p>Our ansatz for a general one-qubit state on the Bloch sphere contains the product of a rotation around the \( x \)-axis and the \( y \)-axis. In the derivation here we focus only on one angle however. Our ansatz is then given by</p>
+
+$$
+\vert \psi \rangle = R_i(\phi)\vert 0 \rangle,
+$$
+
+<p>and the expectation value of our Hamiltonian is</p>
+
+$$
+\langle \psi \vert \hat{H}\vert \psi \rangle = \langle 0 \vert R_i(\phi)^{\dagger} \hat{H}R_i(\phi)\vert 0\rangle. 
+$$
+
+<p>Our derivative with respect to the angle \( \phi \) has a similar structure, that is</p>
+$$
+\frac{\partial }{\partial \phi}\left[\langle \psi(\theta,\phi) \vert \boldsymbol{H}\vert \psi(\theta,\phi)\rangle\right]=\langle \psi(\theta,\phi) \vert \boldsymbol{H}(-\frac{\imath}{2}\boldsymbol{\sigma}_y\vert \psi(\theta,\phi)\rangle+\hspace{0.1cm}\mathrm{h.c}. 
+$$
+
+<p>In order to rewrite the equation of the derivative,
+the following relation is useful
+</p>
+$$
+\langle \psi \vert \hat{A}^{\dagger}\hat{B}\hat{C}\vert \psi \rangle = \frac{1}{2}\left[
+\langle \psi \vert (\hat{A}+\hat{C})^{\dagger}\hat{B}(\boldsymbol{A}+\hat{C})\vert \psi \rangle-\langle \psi \vert (\hat{A}-\hat{C})^{\dagger}\hat{B}(\boldsymbol{A}-\hat{C})\vert \psi \rangle\right],
+$$
+
+<p>where \( \hat{A} \), \( \hat{B} \) and \( \hat{C} \) are arbitrary hermitian
+operators.  If we identify these operators as \( \hat{A}=\boldsymbol{I} \), with
+\( \boldsymbol{I} \) being the unit operator, \( \hat{B}=\hat{H} \) our Hamiltonian,
+and \( \hat{C}=-\imath \boldsymbol{\sigma}_i/2 \), we obtain the following
+expression for the expectation value of the derivative (excluding the hermitian conjugate)
+</p>
+
+$$
+\langle \psi \vert \boldsymbol{I}^{\dagger}\hat{H}(-\frac{\imath}{2}\boldsymbol{\sigma}_i\vert \psi \rangle = \frac{1}{2}\left[
+\langle \psi \vert (\boldsymbol{I}-\frac{\imath}{2} \boldsymbol{\sigma}_i)^{\dagger}\hat{H}(\boldsymbol{I}-\frac{\imath}{2} \boldsymbol{\sigma}_i)\vert \psi \rangle-\langle \psi \vert (\boldsymbol{I}+\frac{\imath}{2} \boldsymbol{\sigma}_i)^{\dagger}\hat{H}(\boldsymbol{I}+\frac{\imath}{2} \boldsymbol{\sigma}_i)\vert \psi \rangle\right].
+$$
+
+<p>If we then use that the rotation matrices can be rewritten as</p>
+$$
+R_{i}(\phi)=\exp{-(\imath\frac{\phi}{2}\sigma_i)}=\cos{(\frac{\phi}{2})}\boldsymbol{I}-\imath\sin{(\frac{\phi}{2})}\boldsymbol{\sigma}_i,
+$$
+
+<p>we see that if we set the angle to \( \phi=\pi/2 \), we have </p>
+$$
+R_{i}(\frac{\pi}{2})=\cos{(\frac{\pi}{4})}\boldsymbol{I}-\imath\sin{(\frac{\pi}{4})}\boldsymbol{\sigma}_i=\frac{1}{\sqrt{2}}\left(\boldsymbol{I}-\frac{\imath}{2} \boldsymbol{\sigma}_i\right).
+$$
+
+<p>This means that we can write</p>
+$$
+\langle \psi \vert \boldsymbol{I}^{\dagger}\hat{H}(-\frac{\imath}{2}\boldsymbol{\sigma}_i\vert \psi \rangle = \frac{1}{2}\left[
+\langle \psi \vert R_i(\frac{\pi}{2})^{\dagger}\hat{H}R_i(\frac{\pi}{2})\vert \psi \rangle-\langle \psi \vert R_i(-\frac{\pi}{2})^{\dagger}\hat{H}R_i(-\frac{\pi}{2})^{\dagger}\vert \psi \rangle\right]=\frac{1}{2}(\langle\hat{H}(\phi+\frac{\pi}{2})\rangle-\langle\hat{H}(\phi-\frac{\pi}{2})\rangle).
+$$
+
 
 <!-- !split -->
 <h2 id="additional-material-on-the-lipkin-model" class="anchor">Additional material on the Lipkin model </h2>
@@ -1616,10 +1213,10 @@ $$
 $$
 \begin{align}
 \vert 2,-1\rangle &= \frac{1}{2} J_+ \vert 2,-2\rangle \notag 
-\label{_auto16}\\
+\label{_auto7}\\
 &= \frac{1}{2} \sum_p a_{p+}^\dagger a_{p-} a_{1-}^{\dagger} a_{2-}^{\dagger}
 a_{3-}^{\dagger} a_{4-}^{\dagger} \vert 0\rangle \notag 
-\label{_auto17}\\
+\label{_auto8}\\
 &= \frac{1}{2} \left(
 a_{1+}^{\dagger} a_{2-}^{\dagger} a_{3-}^{\dagger} a_{4-}^{\dagger} +
 a_{1-}^{\dagger} a_{2+}^{\dagger} a_{3-}^{\dagger} a_{4-}^{\dagger} +
@@ -1780,7 +1377,7 @@ operators
 $$
 \begin{align}
 H = \epsilon J_z + \frac{1}{2}V(J^2_++J^2_-),
-\label{_auto18}
+\label{_auto9}
 \end{align}
 $$
 
@@ -1837,14 +1434,14 @@ $$
 $$
 \begin{align}
 r=+1, & j_z=2n 
-\label{_auto19}\\
+\label{_auto10}\\
 r=+i, & j_z=2n+\frac{1}{2} 
-\label{_auto20}\\
+\label{_auto11}\\
 r=-1, & j_z=2n+1 
-\label{_auto21}\\
+\label{_auto12}\\
 r=-i, & j_z=2n+\frac{3}{2} 
-\label{_auto22}\\
-\label{_auto23}
+\label{_auto13}\\
+\label{_auto14}
 \end{align}
 $$
 
@@ -1878,7 +1475,7 @@ qubits.
 $$
 \begin{align}
 H=\epsilon J_z + \frac{1}{2}V(J^2_++J^2_-).
-\label{_auto24}
+\label{_auto15}
 \end{align}
 $$
 
@@ -1887,11 +1484,11 @@ $$
 $$
 \begin{align}
 H &= \epsilon\sum_{n}j_z^{(n)} + \frac{1}{2}V\left[\left(\sum_nj^{(n)}_{+}\right)^2+\left(\sum_nj^{(n)}_{-}\right)^2\right]
-\label{_auto25}\\
+\label{_auto16}\\
 &= \epsilon\sum_{n}j_z^{(n)} + \frac{1}{2}V\sum_{n,m}\left(j^{(n)}_+j^{(m)}_++j^{(n)}_-j^{(m)}_-\right)
-\label{_auto26}\\
+\label{_auto17}\\
 &= \epsilon\sum_{n}j_z^{(n)} + 2V\sum_{n < m}\left(j^{(n)}_xj^{(m)}_x-j^{(n)}_yj^{(m)}_y\right),
-\label{_auto27}
+\label{_auto18}
 \end{align}
 $$
 
@@ -1936,13 +1533,13 @@ Hamiltonian can be determined by noting that
 $$
 \begin{align}
 \frac{1}{2}(XX-YY)\vert 00\rangle &= \vert 11\rangle,
-\label{_auto28}\\
+\label{_auto19}\\
 \frac{1}{2}(XX-YY)\vert 01\rangle &= 0,
-\label{_auto29}\\
+\label{_auto20}\\
 \frac{1}{2}(XX-YY)\vert 10\rangle &= 0,
-\label{_auto30}\\
+\label{_auto21}\\
 \frac{1}{2}(XX-YY)\vert 11\rangle &= \vert 00\rangle.
-\label{_auto31}
+\label{_auto22}
 \end{align}
 $$
 
@@ -1967,9 +1564,9 @@ within which the \( N \)-degenerate Hamiltonian explores:
 $$
 \begin{align}
 \vert \psi_{\text{even}}\rangle&=\sum_{k=0}^{\lfloor n/2 \rfloor}c_{2k}\vert D^n_{2k}\rangle,
-\label{_auto32}\\
+\label{_auto23}\\
 \vert \psi_{\text{odd}}\rangle&=\sum_{k=0}^{\lfloor n/2 \rfloor}c_{2k+1}\vert D^n_{2k+1}\rangle.
-\label{_auto33}
+\label{_auto24}
 \end{align}
 $$
 
@@ -1978,7 +1575,7 @@ $$
 $$
 \begin{align}
 \vert D^n_k\rangle= \frac{1}{\sqrt{{n \choose k}}}\sum_{x\in h^n_k}\vert x\rangle,
-\label{_auto34}
+\label{_auto25}
 \end{align}
 $$
 
@@ -1986,7 +1583,7 @@ $$
 $$
 \begin{align}
 U^n_k\vert 1\rangle^{\otimes k}\vert 0\rangle^{\otimes n-k}=\vert D^n_k\rangle.
-\label{_auto35}
+\label{_auto26}
 \end{align}
 $$
 
