@@ -1198,3 +1198,62 @@ plt.show()
 
 
 
+
+===== Exercise: Rewrite simple one-qubit Hamiltonian in terms of Pauli matrices  =====
+
+We define a  symmetric matrix  $H\in {\mathbb{R}}^{2\times 2}$
+!bt
+\[
+H = \begin{bmatrix} H_{11} & H_{12} \\ H_{21} & H_{22}
+\end{bmatrix},
+\]
+!et
+We  let $H = H_0 + H_I$, where
+!bt
+\[
+H_0= \begin{bmatrix} E_1 & 0 \\ 0 & E_2\end{bmatrix},
+\]
+!et
+is a diagonal matrix. Similarly,
+!bt
+\[
+H_I= \begin{bmatrix} V_{11} & V_{12} \\ V_{21} & V_{22}\end{bmatrix},
+\]
+!et
+where $V_{ij}$ represent various interaction matrix elements.
+We can view $H_0$ as the non-interacting solution
+!bt
+\begin{equation}
+       H_0\vert 0 \rangle =E_1\vert 0 \rangle,
+\end{equation}
+!et
+and
+!bt
+\begin{equation}
+       H_0\vert 1\rangle =E_2\vert 1\rangle,
+\end{equation}
+!et
+where we have defined the orthogonal computational one-qubit basis states $\vert 0\rangle$ and $\vert 1\rangle$.
+
+
+!bsubex
+Show that you can rewrite the above Hamiltonian in terms of the Pauli $x$ and $z$ matrices
+!bsol
+We rewrite $H$ (and $H_0$ and $H_I$)  via Pauli matrices
+!bt
+\[
+H_0 = \mathcal{E} I + \Omega \sigma_z, \quad \mathcal{E} = \frac{E_1
+  + E_2}{2}, \; \Omega = \frac{E_1-E_2}{2},
+\]
+!et
+and
+!bt
+\[
+H_I = c \bm{I} +\omega_z\sigma_z + \omega_x\sigma_x,
+\]
+!et
+with $c = (V_{11}+V_{22})/2$, $\omega_z = (V_{11}-V_{22})/2$ and $\omega_x = V_{12}=V_{21}$.
+
+!esol
+!esubex
+

@@ -1565,6 +1565,88 @@ plt.show()
     </div>
   </div>
 </div>
+
+
+<!-- --- begin exercise --- -->
+<h2 id="exercise-1-rewrite-simple-one-qubit-hamiltonian-in-terms-of-pauli-matrices">Exercise 1: Rewrite simple one-qubit Hamiltonian in terms of Pauli matrices </h2>
+
+<p>We define a  symmetric matrix  \( H\in {\mathbb{R}}^{2\times 2} \)</p>
+<p>&nbsp;<br>
+$$
+H = \begin{bmatrix} H_{11} & H_{12} \\ H_{21} & H_{22}
+\end{bmatrix},
+$$
+<p>&nbsp;<br>
+
+<p>We  let \( H = H_0 + H_I \), where</p>
+<p>&nbsp;<br>
+$$
+H_0= \begin{bmatrix} E_1 & 0 \\ 0 & E_2\end{bmatrix},
+$$
+<p>&nbsp;<br>
+
+<p>is a diagonal matrix. Similarly,</p>
+<p>&nbsp;<br>
+$$
+H_I= \begin{bmatrix} V_{11} & V_{12} \\ V_{21} & V_{22}\end{bmatrix},
+$$
+<p>&nbsp;<br>
+
+<p>where \( V_{ij} \) represent various interaction matrix elements.
+We can view \( H_0 \) as the non-interacting solution
+</p>
+<p>&nbsp;<br>
+$$
+\begin{equation}
+       H_0\vert 0 \rangle =E_1\vert 0 \rangle,
+\tag{8}
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+<p>and</p>
+<p>&nbsp;<br>
+$$
+\begin{equation}
+       H_0\vert 1\rangle =E_2\vert 1\rangle,
+\tag{9}
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+<p>where we have defined the orthogonal computational one-qubit basis states \( \vert 0\rangle \) and \( \vert 1\rangle \).</p>
+
+<!-- --- begin subexercise --- -->
+<p>
+<b>a)</b>
+Show that you can rewrite the above Hamiltonian in terms of the Pauli \( x \) and \( z \) matrices
+</p>
+
+<!-- --- begin solution of exercise --- -->
+<p>
+<b>Solution.</b>
+We rewrite \( H \) (and \( H_0 \) and \( H_I \))  via Pauli matrices
+</p>
+<p>&nbsp;<br>
+$$
+H_0 = \mathcal{E} I + \Omega \sigma_z, \quad \mathcal{E} = \frac{E_1
+  + E_2}{2}, \; \Omega = \frac{E_1-E_2}{2},
+$$
+<p>&nbsp;<br>
+
+<p>and</p>
+<p>&nbsp;<br>
+$$
+H_I = c \boldsymbol{I} +\omega_z\sigma_z + \omega_x\sigma_x,
+$$
+<p>&nbsp;<br>
+
+<p>with \( c = (V_{11}+V_{22})/2 \), \( \omega_z = (V_{11}-V_{22})/2 \) and \( \omega_x = V_{12}=V_{21} \).</p>
+<!-- --- end solution of exercise --- -->
+
+<!-- --- end subexercise --- -->
+
+<!-- --- end exercise --- -->
 </section>
 
 
