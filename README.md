@@ -1,5 +1,8 @@
 # Quantum Computing Lectures for  Nano and Quantum Workshop, Cali, Colombia, December 4-8, 2023
 
+The websiate for this set of lectures is https://github.com/CompPhysics/QuantumComputingLectures.
+Feel free to navigate the different folders and use as you like.
+
 The aim of this set of lectures is to demonstrate how we can use
 quantum computing to find for example the eigenvalues and eigenstates
 of quantum mechanical many-body systems.  After having introduced some
@@ -13,6 +16,7 @@ simulate such quantum mechanical systems, using either own codes or
 the functionality provided by a software like Qiskit
 https://qiskit.org/.
 
+The lectures will also serve as a wy to motivate physical realization (quantum engineering) of different circuits and gates.
 
 
 ## Tentative content (more material to be added continuously)
@@ -29,6 +33,6 @@ https://qiskit.org/.
   - Implementing VQE efficiently for Hamiltonian models (Lipkin model)
 
 
-The notes (either in pdf, html or as jupyter-notebooks) can be accessed from https://github.com/CompPhysics/QuantumComputingLectures/tree/gh-pages/doc/pub
+The notes (either in pdf, html or as jupyter-notebooks) can be accessed from https://github.com/CompPhysics/QuantumComputingLectures.
 
 
