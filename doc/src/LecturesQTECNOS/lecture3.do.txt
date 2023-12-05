@@ -4,12 +4,12 @@ DATE: Cali, Colombia, December 4-8, 2023
 
 
 
-
+!split
 ===== Spectral Decomposition, Measurements and Density matrices   =====
 
 !bblock 
   o Density matrices and Measurements
-  o "Video of lecture":"https://youtu.be/jVh_0KfSSNk"
+  o Entropy and entaglement
 !eblock
 
 
@@ -863,17 +863,5 @@ plt.xlabel('$\lambda$')
 plt.ylabel('Entropy')          
 plt.show
 !ec
-
-
-
-
-!bblock Lecture next week
-o More on Density natrices and traces
-o Entanglement and entropies
-!eblock
-
-
-
-
 
 
