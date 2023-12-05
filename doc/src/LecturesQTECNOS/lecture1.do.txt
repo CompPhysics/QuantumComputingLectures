@@ -23,6 +23,12 @@ o This may allows us to find the optimal parameters for the physical realization
 o Then simulate quantum systems (and other as well) on quantum computers
 
 
+!split
+===== More info =====
+o Lecture 4 by Jonas B. Flaten and Oskar Leinonen
+o Talk by Jonas and Oskar on Wednesday
+o Poster by Daniel Beccatini Lima, Keran Chen, Jonny I. Aarstad, and Håkon Kvernmoen
+
 
 !split
 ===== Quantum Engineering =====
