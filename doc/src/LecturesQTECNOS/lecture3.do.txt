@@ -349,7 +349,7 @@ For a one-qubit system we can reach every point on the Bloch sphere
 (as discussed earlier) with a rotation about the $x$-axis and the
 $y$-axis.
 
-We can express this mathematically through the following operations (see whiteboard for the drawing), giving us a new state $\vert \psi\rangle$
+We can express this mathematically through the following operations, giving us a new state $\vert \psi\rangle$
 !bt
 \[
 \vert\psi\rangle = R_y(\phi)R_x(\theta)\vert 0 \rangle.
@@ -579,7 +579,10 @@ This means that we can write
 !et
 
 
+!split
+===== Simulations of the various models =====
 
+For the simulations, see the jupyter-notebooks at URL:"https://github.com/CompPhysics/QuantumComputingLectures/tree/gh-pages/doc/Programs/LipkinModel"
 
 
 
