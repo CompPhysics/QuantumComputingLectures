@@ -8,7 +8,7 @@ DATE: Cali, Colombia, December 4-8, 2023
 ===== Spectral Decomposition, Measurements and Density matrices   =====
 
 !bblock 
-  o Density matrices and Measurements
+  o Density matrices and measurements
   o Entropy and entaglement
   o Additional material on gates and using "Qiskit":"https://qiskit.org/"
 !eblock
